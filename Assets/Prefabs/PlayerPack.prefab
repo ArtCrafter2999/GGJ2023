@@ -495,7 +495,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 2
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 82f1305d715cfac49bbc41a38a37c12a, type: 2}
   m_Interpolate: 1
   m_SleepingMode: 0
   m_CollisionDetection: 1
@@ -535,12 +535,9 @@ MonoBehaviour:
   FrictionAmount: 0.09
   JumpForce: 6.05
   CoyoteTime: 0.2
-  _coyoteTimeLeft: 0
   jumpCutMultiplier: 0.35
   FallGravityMultiplier: 1.2
-  _isJumping: 0
-  JumpsCount: 1
-  _jumpsCountLeft: 0
+  JumpsCount: 2
   GroundCheckPoint: {fileID: 2692484667050390561}
   GroundCheckSize: {x: 0.1, y: 0.1}
   GroundLayer:
@@ -833,7 +830,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae526002f8c21884a9755791b6d7fc9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerSeconds: 0
   Player: {fileID: 2692484668256730893}
   IsPause: 0
 --- !u!1 &7239590840673737808

@@ -48,10 +48,11 @@ public class PlayerController : MonoBehaviour
 	public Collider2D GroundCollider => Physics2D.OverlapBox(GroundCheckPoint.position, GroundCheckSize, 0, GroundLayer);
 
 	public PlayerControlls PlayerControlls => GameManager.Instance.Controlls;
-	#region Enable / Disable
-	private void OnEnable()
+    #region Enable / Disable
+    private void OnEnable()
 	{
-		PlayerControlls.Player.Enable();
+		if (GameManager.Instance != null)
+			PlayerControlls.Player.Enable();
 	}
 	private void OnDisable()
 	{
@@ -61,7 +62,8 @@ public class PlayerController : MonoBehaviour
 
 	private void Start()
 	{
-		PlayerControlls.Player.Jump.performed += ctx => Jump();
+        PlayerControlls.Player.Enable();
+        PlayerControlls.Player.Jump.performed += ctx => Jump();
 		PlayerControlls.Player.Jump.canceled += ctx => OnJumpUp();
 
 		rb = GetComponent<Rigidbody2D>();
@@ -139,7 +141,7 @@ public class PlayerController : MonoBehaviour
 		{
 			FallDown();
 		}
-		else if ((_jumpsCountLeft > 0 && _coyoteTimeLeft > 0) || (GroundCollider && !_isJumping) ) //checks if was last grounded within coyoteTime and that jump has been pressed within bufferTime
+		else if ((_jumpsCountLeft > 0 || _coyoteTimeLeft > 0) || (GroundCollider && !_isJumping) ) //checks if was last grounded within coyoteTime and that jump has been pressed within bufferTime
 		{
 			rb.AddForce(Vector2.up * JumpForce * rb.gravityScale, ForceMode2D.Impulse);
 			_isJumping = true;

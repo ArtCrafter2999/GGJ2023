@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    public float PlayerSeconds;
     public GameObject Player;
     public Player PlayerComponent => Player.GetComponent<Player>();
     public PlayerController PlayerController => Player.GetComponent<PlayerController>();
