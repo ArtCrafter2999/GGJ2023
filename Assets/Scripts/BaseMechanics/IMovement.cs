@@ -1,4 +1,4 @@
 ﻿public interface IMovement
 {
-    public float GetSpeed { get; set; }
+    public float MoveSpeed { get; set; }
 }
