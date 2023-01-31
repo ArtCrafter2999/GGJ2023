@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +16,19 @@ public class PlayerController : MonoBehaviour
 	public float VelPower;
 	[Space(10)]
 	private float _moveInput;
+	public float MoveInput { get => _moveInput; set 
+		{
+			if (_disableMovement == null)
+				_moveInput = value;
+			else 
+			{
+				_moveInput = _disableMovement == Direction2.Left ?
+					MathF.Max(0, value) :
+					Mathf.Min(0, value);
+			} 
+		} 
+	}
+	private Direction2? _disableMovement = null;
 	[Space(10)]
 	public float FrictionAmount;
 
@@ -28,24 +42,36 @@ public class PlayerController : MonoBehaviour
 	public float FallGravityMultiplier;
 	private float _gravityScale;
 	[Space(10)]
-    private bool _isJumping;
 	public int JumpsCount;
+    public bool IsJumping { get; private set; }
     private int _jumpsCountLeft;
-	
-	[Header("Checks")]
+	[Header("Grab/Slide")]
+	public float GrabTime;
+    [Range(0, 1)]
+    public float GrabLerp;
+	public float SlideSpeed;
+
+    [Header("Checks")]
 	public Transform GroundCheckPoint;
-	public Vector2 GroundCheckSize;
+	public Transform RightCheckPoint;
+	public Transform LeftCheckPoint;
+	public Vector2 CheckSize;
 	[Space(10)]
 	public LayerMask GroundLayer;
-
+	
 	public enum Direction2
     {
 		Right,
 		Left
     }
-	public Direction2 LookingDirection { get; private set; } = Direction2.Right; 
+	public Direction2 LookingDirection { get; private set; } = Direction2.Right;
+	private bool _isGrabbing = false;
+	public bool IsGrabbing { get => _isGrabbing; private set { if (!_isGrabbing && value) StartCoroutine(LateSlide()); _isGrabbing = value; } }
+	public bool IsSliding { get; private set; }
 
-	public Collider2D GroundCollider => Physics2D.OverlapBox(GroundCheckPoint.position, GroundCheckSize, 0, GroundLayer);
+    public Collider2D GroundCollider => Physics2D.OverlapBox(GroundCheckPoint.position, CheckSize, 0, GroundLayer);
+	public Collider2D RightCollider => Physics2D.OverlapBox(RightCheckPoint.position, CheckSize, 0, GroundLayer);
+	public Collider2D LeftCollider => Physics2D.OverlapBox(LeftCheckPoint.position, CheckSize, 0, GroundLayer);
 
 	public PlayerControlls PlayerControlls => GameManager.Instance.Controlls;
     #region Enable / Disable
@@ -66,20 +92,22 @@ public class PlayerController : MonoBehaviour
         PlayerControlls.Player.Jump.performed += ctx => Jump();
 		PlayerControlls.Player.Jump.canceled += ctx => OnJumpUp();
 
-		rb = GetComponent<Rigidbody2D>();
+
+        rb = GetComponent<Rigidbody2D>();
 
 		_gravityScale = rb.gravityScale;
 	}
 
-	private void Update()
+    private void Update()
 	{
-		_moveInput = PlayerControlls.Player.Move.ReadValue<float>();
-        if (Mathf.Abs(_moveInput) > 0.01f)
-        {
-			LookingDirection = _moveInput > 0 ? Direction2.Right : Direction2.Left;
-		}
+        MoveInput = PlayerControlls.Player.Move.ReadValue<float>();
+        if (!IsGrabbing)ChangeDirection();
+		GrabCheck();
+		GrabWork();
+		
+
 		#region Checks
-		if (GroundCollider && !_isJumping) //checks if set box overlaps with ground
+		if (GroundCollider && !IsJumping) //checks if set box overlaps with ground
 		{
 			_jumpsCountLeft = JumpsCount;
             _coyoteTimeLeft = CoyoteTime;
@@ -91,16 +119,65 @@ public class PlayerController : MonoBehaviour
 
 		if (rb.velocity.y < 0)
 		{
-			_isJumping = false;
+			IsJumping = false;
 		}
 		#endregion
 
+
 	}
 
+    #region Grab/Slide
+    private void GrabCheck()
+	{
+		if ((MoveInput > 0 && RightCollider) ||
+			(MoveInput < 0 && LeftCollider))
+		{
+			IsGrabbing = true;
+		}
+		if (!(RightCollider || LeftCollider) || GroundCollider)
+		{
+			IsGrabbing = false;
+        }
+	}
+
+	private void GrabWork()
+	{
+		if (IsGrabbing)
+		{
+			if(!IsSliding)rb.velocity = Vector2.Lerp(rb.velocity, Vector2.zero, GrabLerp);
+            _jumpsCountLeft = JumpsCount;
+        }
+	}
+    IEnumerator LateSlide()
+    {
+        yield return new WaitForSeconds(GrabTime);
+        IsSliding = true;
+        while (IsGrabbing)
+        {
+            rb.velocity = new Vector2(0, -SlideSpeed);
+            yield return new WaitForFixedUpdate();
+        }
+        IsSliding = false;
+    }
+	IEnumerator DisableMovementDirectionForAWhile(Direction2 direction, float disabiltyTime)
+	{
+		_disableMovement = direction;
+		yield return new WaitForSeconds(disabiltyTime);
+		_disableMovement = null;
+	}
+    #endregion
+
+    private void ChangeDirection()
+	{
+        if (Mathf.Abs(MoveInput) > 0.01f)
+        {
+            LookingDirection = MoveInput > 0 ? Direction2.Right : Direction2.Left;
+		}
+	}
 	private void FixedUpdate()
 	{
 		#region Run
-		float targetSpeed = _moveInput * MoveSpeed;
+		float targetSpeed = MoveInput * MoveSpeed;
 		//calculate the direction we want to move in and our desired velocity
 		float speedDif = targetSpeed - rb.velocity.x;
 		//calculate difference between current velocity and desired velocity
@@ -115,7 +192,7 @@ public class PlayerController : MonoBehaviour
 		#endregion
 
 		#region Friction
-		if (GroundCollider && Mathf.Abs(_moveInput) < 0.01f)
+		if (GroundCollider && Mathf.Abs(MoveInput) < 0.01f)
 		{
 			float amount = Mathf.Min(Mathf.Abs(rb.velocity.x), Mathf.Abs(FrictionAmount));
 			amount *= Mathf.Sign(rb.velocity.x);
@@ -124,34 +201,56 @@ public class PlayerController : MonoBehaviour
 		#endregion
 
 		#region Jump Gravity
-		if (rb.velocity.y < 0)
+		if (!IsGrabbing)
 		{
-			rb.gravityScale = _gravityScale * FallGravityMultiplier;
-		}
-		else
-		{
-			rb.gravityScale = _gravityScale;
+			if (rb.velocity.y < 0)
+			{
+				rb.gravityScale = _gravityScale * FallGravityMultiplier;
+			}
+			else
+			{
+				rb.gravityScale = _gravityScale;
+			}
 		}
 		#endregion
 	}
 
 	private void Jump()
 	{
-		if (PlayerControlls.Player.Down.ReadValue<float>() == 1)//Провалитися під платформу
+        if (PlayerControlls.Player.Down.ReadValue<float>() == 1)//Провалитися під платформу
+        {
+            FallDown();
+        }
+        else if (IsGrabbing)
 		{
-			FallDown();
-		}
-		else if ((_jumpsCountLeft > 0 || _coyoteTimeLeft > 0) || (GroundCollider && !_isJumping) ) //checks if was last grounded within coyoteTime and that jump has been pressed within bufferTime
+			IsGrabbing = false;
+            rb.velocity = new Vector2(rb.velocity.x, 0);
+            rb.AddForce(Vector2.up * JumpForce * rb.gravityScale, ForceMode2D.Impulse);
+            StartCoroutine(DisableMovementDirectionForAWhile(LookingDirection, 0.1f));
+            if (LookingDirection == Direction2.Right)
+			{
+                rb.AddForce(Vector2.left * JumpForce * rb.gravityScale, ForceMode2D.Impulse);
+            }
+			else
+			{
+                rb.AddForce(Vector2.right * JumpForce * rb.gravityScale, ForceMode2D.Impulse);
+                
+            }
+			
+            IsJumping = true;
+        }
+		else if ((_jumpsCountLeft > 0 || _coyoteTimeLeft > 0) || (GroundCollider && !IsJumping) ) //checks if was last grounded within coyoteTime and that jump has been pressed within bufferTime
 		{
-			rb.AddForce(Vector2.up * JumpForce * rb.gravityScale, ForceMode2D.Impulse);
-			_isJumping = true;
+            rb.velocity = new Vector2(rb.velocity.x, 0);
+            rb.AddForce(Vector2.up * JumpForce * rb.gravityScale, ForceMode2D.Impulse);
+			IsJumping = true;
 		}
 		_jumpsCountLeft--;
 	}
 
 	public void OnJumpUp()
 	{
-		if (rb.velocity.y > 0 && _isJumping)
+		if (rb.velocity.y > 0 && IsJumping)
 		{
 			rb.AddForce(Vector2.down * rb.velocity.y * jumpCutMultiplier, ForceMode2D.Impulse);
 		}
@@ -175,4 +274,5 @@ public class PlayerController : MonoBehaviour
 		yield return new WaitForSeconds(0.5f);
 		platform.rotationalOffset = 0;
 	}
+	
 }
