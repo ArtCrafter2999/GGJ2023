@@ -1,4 +1,4 @@
 ﻿public interface IGrowth
 {
-    public float GrowthTime { get; set; }
+    float GrowthTime { get; set; }
 }
