@@ -78,6 +78,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2692484666861925550}
   - component: {fileID: 2692484666861925545}
+  - component: {fileID: 6935819049888019423}
   m_Layer: 3
   m_Name: Sprite
   m_TagString: Untagged
@@ -94,7 +95,7 @@ Transform:
   m_GameObject: {fileID: 2692484666861925551}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2692484668256730894}
@@ -141,7 +142,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 778853022, guid: db90c9f2c22c5694caee0225d206d445, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -152,6 +153,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &6935819049888019423
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2692484666861925551}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 46d2457545626db429972ef3cfcd4e00, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &2692484667050390566
 GameObject:
   m_ObjectHideFlags: 0
@@ -570,8 +591,10 @@ MonoBehaviour:
   CoyoteTime: 0.2
   jumpCutMultiplier: 0.35
   FallGravityMultiplier: 1.2
-  _isJumping: 0
   JumpsCount: 2
+  GrabTime: 0
+  GrabLerp: 0
+  SlideSpeed: 0
   GroundCheckPoint: {fileID: 2692484667050390561}
   RightCheckPoint: {fileID: 5359164522750764893}
   LeftCheckPoint: {fileID: 7471600653683582228}
