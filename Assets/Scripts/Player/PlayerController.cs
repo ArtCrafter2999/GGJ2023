@@ -4,16 +4,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IMovement
 {
 	[Header("References")]
 	private Rigidbody2D rb;
 
 	[Header("Movement")]
-	public float MoveSpeed;
 	public float Acceleration;
 	public float Decceleration;
 	public float VelPower;
+	[field:SerializeField] public float MoveSpeed { get; set; }
+
 	[Space(10)]
 	private float _moveInput;
 	public float MoveInput { get => _moveInput; set 

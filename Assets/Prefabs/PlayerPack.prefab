@@ -561,17 +561,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95c90cb9e6f82d845a087e400b0cec09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 8
   Acceleration: 13
   Decceleration: 6
   VelPower: 0.96
+  <MoveSpeed>k__BackingField: 8
   FrictionAmount: 0.09
   JumpForce: 6.05
   CoyoteTime: 0.2
   jumpCutMultiplier: 0.35
   FallGravityMultiplier: 1.2
-  _isJumping: 0
   JumpsCount: 2
+  GrabTime: 0
+  GrabLerp: 0
+  SlideSpeed: 0
   GroundCheckPoint: {fileID: 2692484667050390561}
   RightCheckPoint: {fileID: 5359164522750764893}
   LeftCheckPoint: {fileID: 7471600653683582228}
