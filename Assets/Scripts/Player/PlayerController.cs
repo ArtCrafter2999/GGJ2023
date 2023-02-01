@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -43,7 +44,7 @@ public class PlayerController : MonoBehaviour
 	private float _gravityScale;
 	[Space(10)]
 	public int JumpsCount;
-	public bool IsJumping;
+	public bool IsJumping { get; private set; }
     private int _jumpsCountLeft;
 	[Header("Grab/Slide")]
 	public float GrabTime;
@@ -55,7 +56,8 @@ public class PlayerController : MonoBehaviour
 	public Transform GroundCheckPoint;
 	public Transform RightCheckPoint;
 	public Transform LeftCheckPoint;
-	public Vector2 CheckSize;
+    public Transform CeilingCheckPoint;
+    public Vector2 CheckSize;
 	[Space(10)]
 	public LayerMask GroundLayer;
     public LayerMask WallsLayer;
@@ -70,12 +72,13 @@ public class PlayerController : MonoBehaviour
 	private bool _isGrabbing = false;
 	public bool IsGrabbing { get => _isGrabbing; private set { if (!_isGrabbing && value) StartCoroutine(LateSlide()); _isGrabbing = value; } }
 	public bool IsSliding { get; private set; }
+	public bool IsCeiling => CeilingCollider;
 
-    public Collider2D GroundCollider => Physics2D.OverlapBox(GroundCheckPoint.position, CheckSize, 0, GroundLayer);
+    public Collider2D GroundCollider => Physics2D.OverlapBox(GroundCheckPoint.position, Vector2.up * CheckSize, 0, GroundLayer);
 	public Collider2D RightCollider => Physics2D.OverlapBox(RightCheckPoint.position, Vector2.right * CheckSize, 0, WallsLayer);
 	public Collider2D LeftCollider => Physics2D.OverlapBox(LeftCheckPoint.position, Vector2.right * CheckSize, 0, WallsLayer);
-
-	public PlayerControlls PlayerControlls => GameManager.Instance.Controlls;
+	public Collider2D CeilingCollider => Physics2D.OverlapBox(CeilingCheckPoint.position, Vector2.up * CheckSize, 0, WallsLayer);
+    public PlayerControlls PlayerControlls => GameManager.Instance.Controlls;
     #region Enable / Disable
     private void OnEnable()
 	{
@@ -93,7 +96,7 @@ public class PlayerController : MonoBehaviour
         PlayerControlls.Player.Enable();
         PlayerControlls.Player.Jump.performed += ctx => Jump();
 		PlayerControlls.Player.Jump.canceled += ctx => OnJumpUp();
-
+		GetComponent<Health>().OnDeath.AddListener(OnDisable);
 
         rb = GetComponent<Rigidbody2D>();
 

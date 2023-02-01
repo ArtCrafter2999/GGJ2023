@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -105,7 +105,364 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Ridix_idle_run_jump_doublejumpt_0
+      name: Player_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 423573fc283fa3f459187ee48e00c8b0
+      internalID: -1606832857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d84c7ce51694c854d9f8fa06523af3d9
+      internalID: -675922540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d9d7ea00d0feef4fbead5bf1ee75be1
+      internalID: 1164778475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1126d7b70d38d7a49957962e47602eb4
+      internalID: 975305732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 390c946b70a486745a07e4851d8f0df1
+      internalID: -192006976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_5
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9dd8c3ddb944b064b931805c084e6a9a
+      internalID: 464622713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2abda04b66aff94cb61d461b2440bf3
+      internalID: 1814679151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_7
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d534446d00f23144a8e8c30fcf194a40
+      internalID: 1358604639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_8
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ec019b3bff1245438b378df897ff1d1
+      internalID: 1583089336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_9
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03ea4edee45ce59439fce652cd60c678
+      internalID: 657131629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_10
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d63ca87b6a599234d97bd8890c0b88cd
+      internalID: -1159629786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_11
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e24bd1bf788e34d40af23d800c050f82
+      internalID: 965396953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44752c3f0d2143b46b554ccdb67b29a4
+      internalID: 1855018001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_13
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 933a2a5127ccec74d9d3c9ea02d6cf15
+      internalID: 841769886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_14
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 942d4ae702dfbce46827161ccbd4ae35
+      internalID: 1793712663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_15
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0142e0acbbf0f414295035ad887400dd
+      internalID: 633049425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_16
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2558c7b7505ab0a44aca1fcd88729dfc
+      internalID: 1124747411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_17
       rect:
         serializedVersion: 2
         x: 0
@@ -119,14 +476,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 20dbfd3711f6548459f26819c4354b83
-      internalID: 778853022
+      spriteID: 5c352e698f8d6e54fa2e29c9e31140ac
+      internalID: 1225905596
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ridix_idle_run_jump_doublejumpt_1
+      name: Player_18
       rect:
         serializedVersion: 2
         x: 64
@@ -140,14 +497,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 45406e713d40bf44ebd70c46af483fcb
-      internalID: -516695829
+      spriteID: b8ad6d5bc894250439f351fbb44dca2b
+      internalID: -1043727377
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ridix_idle_run_jump_doublejumpt_2
+      name: Player_19
       rect:
         serializedVersion: 2
         x: 128
@@ -161,14 +518,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 28fb37a4fc687c34cbbe5cee5d529e18
-      internalID: 1288391388
+      spriteID: f0f70d1d7ee6c144094facbe79f6ccbf
+      internalID: -91704733
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ridix_idle_run_jump_doublejumpt_3
+      name: Player_20
       rect:
         serializedVersion: 2
         x: 192
@@ -182,14 +539,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8dddaee549fbc7c4c89d534473d5b262
-      internalID: 107560711
+      spriteID: 5dfc536db86ba7d42a9165dc277554a2
+      internalID: -824594558
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ridix_idle_run_jump_doublejumpt_4
+      name: Player_21
       rect:
         serializedVersion: 2
         x: 256
@@ -203,35 +560,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 514536906a02f0b4396223f7c5f2310b
-      internalID: -643309916
+      spriteID: 50530d950a3cabc47a514a11913a5a09
+      internalID: -1869981093
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ridix_idle_run_jump_doublejumpt_5
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 192
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 223393add76bc554aad0008883e090cb
-      internalID: -831863355
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ridix_idle_run_jump_doublejumpt_6
+      name: Player_22
       rect:
         serializedVersion: 2
         x: 0
@@ -245,14 +581,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 888031269b5f43e43a562152f6f7ff4d
-      internalID: 357957193
+      spriteID: e12118758d233dc40921ddfa713f6b81
+      internalID: 1441186121
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ridix_idle_run_jump_doublejumpt_7
+      name: Player_23
       rect:
         serializedVersion: 2
         x: 64
@@ -266,14 +602,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7480360486e23d645b6a550b1160c5b1
-      internalID: 447700075
+      spriteID: 532c233839320a44aba068554c2069bf
+      internalID: 667183172
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ridix_idle_run_jump_doublejumpt_8
+      name: Player_24
       rect:
         serializedVersion: 2
         x: 128
@@ -287,14 +623,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 71bac4635832b44418cf2af9c19d61fa
-      internalID: -987710345
+      spriteID: 627ba287e1a2d8b4182ba40bb1388d00
+      internalID: -464801690
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ridix_idle_run_jump_doublejumpt_9
+      name: Player_25
       rect:
         serializedVersion: 2
         x: 192
@@ -308,14 +644,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b12b02c3eff0273408be60356c752424
-      internalID: -1089435761
+      spriteID: ae847ff0afb9c954cbaccb041e572a2b
+      internalID: 1824958805
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ridix_idle_run_jump_doublejumpt_10
+      name: Player_26
       rect:
         serializedVersion: 2
         x: 256
@@ -329,14 +665,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 370d5662afa86b247a36212ddf1c19c8
-      internalID: 1632542187
+      spriteID: 170b9d73b3dc8d141b8efe5d0d1f2f3e
+      internalID: -925508701
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ridix_idle_run_jump_doublejumpt_11
+      name: Player_27
       rect:
         serializedVersion: 2
         x: 320
@@ -350,14 +686,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 69051761c54cead4c877be7b76a664c0
-      internalID: -642555335
+      spriteID: 52e54b1c7b544b143a6182fd5055deae
+      internalID: -1237670436
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ridix_idle_run_jump_doublejumpt_12
+      name: Player_28
       rect:
         serializedVersion: 2
         x: 0
@@ -371,14 +707,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c16b2b5fc8267d545a48c276b8b0af5f
-      internalID: -16167926
+      spriteID: 3597abb6e3dc1334285070736e54f713
+      internalID: -1522171411
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ridix_idle_run_jump_doublejumpt_13
+      name: Player_29
       rect:
         serializedVersion: 2
         x: 64
@@ -392,14 +728,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1713d0f753e82364a962faa2fe6ffea4
-      internalID: -212655707
+      spriteID: 3ba1eeaf075de1040ba717764775da4e
+      internalID: -1618342149
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ridix_idle_run_jump_doublejumpt_14
+      name: Player_30
       rect:
         serializedVersion: 2
         x: 128
@@ -413,14 +749,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f143cf371768f7a46bce2eda67b26557
-      internalID: -1920199254
+      spriteID: 910b5825783e37341802bbc3c1ecbf41
+      internalID: -94891901
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ridix_idle_run_jump_doublejumpt_15
+      name: Player_31
       rect:
         serializedVersion: 2
         x: 192
@@ -434,18 +770,102 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c2c9f40a17ee48b41bd61f8a50993455
-      internalID: -1869330435
+      spriteID: adf55f949f31a694fb0c77578f3d9fc8
+      internalID: 312702824
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ridix_idle_run_jump_doublejumpt_16
+      name: Player_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab94d7d9226e58442bbff0545421b1f9
+      internalID: 1435816319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_33
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b7ecb9e4218a2044b3259ce21516a64
+      internalID: 1518538294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_34
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00db987668742ab4284cefc996e6146b
+      internalID: -29131595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_35
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f34c934fe56465549955eef2fa64f5ba
+      internalID: 1465641343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_36
       rect:
         serializedVersion: 2
         x: 256
-        y: 64
+        y: 0
         width: 64
         height: 64
       alignment: 0
@@ -455,18 +875,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: acea0bd6d188cd64696ef0a8ec404628
-      internalID: 2061278543
+      spriteID: 7862e05655622d540a97b813771c68fc
+      internalID: 351250537
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ridix_idle_run_jump_doublejumpt_17
+      name: Player_37
       rect:
         serializedVersion: 2
         x: 320
-        y: 64
+        y: 0
         width: 64
         height: 64
       alignment: 0
@@ -476,18 +896,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a1208967df8268647801b5bb3f7c2668
-      internalID: -1000732313
+      spriteID: 3b49eb63fa5c2b24693df625c0cebb36
+      internalID: 736983546
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ridix_idle_run_jump_doublejumpt_18
+      name: Player_38
       rect:
         serializedVersion: 2
         x: 384
-        y: 64
+        y: 0
         width: 64
         height: 64
       alignment: 0
@@ -497,18 +917,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0bea1a1cdace8f943b733b31cb908589
-      internalID: -2013905218
+      spriteID: c30102698b2a033408eb7f80637cb207
+      internalID: 1406915938
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ridix_idle_run_jump_doublejumpt_19
+      name: Player_39
       rect:
         serializedVersion: 2
         x: 448
-        y: 64
+        y: 0
         width: 64
         height: 64
       alignment: 0
@@ -518,38 +938,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c2e094a7a0ca1f040b3032617e89a9cf
-      internalID: 1268090705
+      spriteID: 0e13e4b1764f7494ca815f26e0f6f531
+      internalID: -1720151675
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ridix_idle_run_jump_doublejumpt_20
+      name: Player_40
       rect:
         serializedVersion: 2
         x: 512
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7bcc1adc9f489b244b41893b746e2beb
-      internalID: 1314928225
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ridix_idle_run_jump_doublejumpt_21
-      rect:
-        serializedVersion: 2
-        x: 0
         y: 0
         width: 64
         height: 64
@@ -560,17 +959,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c8e85dbe756227644925041cb51effb5
-      internalID: 833983428
+      spriteID: 066b9aac33ffdea45a0064b593b350b6
+      internalID: 164727123
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ridix_idle_run_jump_doublejumpt_22
+      name: Player_41
       rect:
         serializedVersion: 2
-        x: 64
+        x: 576
         y: 0
         width: 64
         height: 64
@@ -581,17 +980,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b296410c239600d45b70c5820644c3df
-      internalID: -1666824644
+      spriteID: 13dcd4041eb70834b887d1b2dc4e133d
+      internalID: -1440440074
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ridix_idle_run_jump_doublejumpt_23
+      name: Player_42
       rect:
         serializedVersion: 2
-        x: 128
+        x: 640
         y: 0
         width: 64
         height: 64
@@ -602,92 +1001,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6c1e050cda5dec744808cb856fcc1604
-      internalID: -920077295
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ridix_idle_run_jump_doublejumpt_24
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 691e4ca5e0bbb314787a9ee0c833c7fd
-      internalID: -2136554265
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ridix_idle_run_jump_doublejumpt_25
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a3284de150d426c4d96d0ab06cd20283
-      internalID: -1136094632
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ridix_idle_run_jump_doublejumpt_26
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 10807b3f569e1fd44a784e8d0b455be6
-      internalID: -762850356
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ridix_idle_run_jump_doublejumpt_27
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f79d84fa1ddf4a54e93f654e8da0d214
-      internalID: -1736807412
+      spriteID: 0ee4f544438ae5544ac57aa6c7415e42
+      internalID: 237604380
       vertices: []
       indices: 
       edges: []
@@ -703,34 +1018,49 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Ridix_idle_run_jump_doublejumpt_27: -1736807412
-      Ridix_idle_run_jump_doublejumpt_4: -643309916
-      Ridix_idle_run_jump_doublejumpt_17: -1000732313
-      Ridix_idle_run_jump_doublejumpt_24: -2136554265
-      Ridix_idle_run_jump_doublejumpt_16: 2061278543
-      Ridix_idle_run_jump_doublejumpt_7: 447700075
-      Ridix_idle_run_jump_doublejumpt_10: 1632542187
-      Ridix_idle_run_jump_doublejumpt_0: 778853022
-      Ridix_idle_run_jump_doublejumpt_8: -987710345
-      Ridix_idle_run_jump_doublejumpt_18: -2013905218
-      Ridix_idle_run_jump_doublejumpt_23: -920077295
-      Ridix_idle_run_jump_doublejumpt_20: 1314928225
-      Ridix_idle_run_jump_doublejumpt_1: -516695829
-      Ridix_idle_run_jump_doublejumpt_3: 107560711
-      Ridix_idle_run_jump_doublejumpt_12: -16167926
-      Ridix_idle_run_jump_doublejumpt_26: -762850356
-      Ridix_idle_run_jump_doublejumpt_21: 833983428
-      Ridix_idle_run_jump_doublejumpt_5: -831863355
-      Ridix_idle_run_jump_doublejumpt_19: 1268090705
-      Ridix_idle_run_jump_doublejumpt_11: -642555335
-      Ridix_idle_run_jump_doublejumpt_13: -212655707
-      Ridix_idle_run_jump_doublejumpt_9: -1089435761
-      Ridix_idle_run_jump_doublejumpt_2: 1288391388
-      Ridix_idle_run_jump_doublejumpt_22: -1666824644
-      Ridix_idle_run_jump_doublejumpt_6: 357957193
-      Ridix_idle_run_jump_doublejumpt_14: -1920199254
-      Ridix_idle_run_jump_doublejumpt_15: -1869330435
-      Ridix_idle_run_jump_doublejumpt_25: -1136094632
+      Player_17: 1225905596
+      Player_33: 1518538294
+      Player_2: 1164778475
+      Player_18: -1043727377
+      Player_36: 351250537
+      Player_34: -29131595
+      Player_12: 1855018001
+      Player_29: -1618342149
+      Player_1: -675922540
+      Player_9: 657131629
+      Player_14: 1793712663
+      Player_7: 1358604639
+      Player_16: 1124747411
+      Player_40: 164727123
+      Player_8: 1583089336
+      Player_39: -1720151675
+      Player_10: -1159629786
+      Player_27: -1237670436
+      Player_15: 633049425
+      Player_13: 841769886
+      Player_21: -1869981093
+      Player_32: 1435816319
+      Player_38: 1406915938
+      Player_24: -464801690
+      Player_37: 736983546
+      Player_42: 237604380
+      Player_35: 1465641343
+      Player_11: 965396953
+      Player_19: -91704733
+      Player_20: -824594558
+      Player_30: -94891901
+      Player_4: -192006976
+      Player_23: 667183172
+      Player_22: 1441186121
+      Player_25: 1824958805
+      Player_6: 1814679151
+      Player_31: 312702824
+      Player_0: -1606832857
+      Player_41: -1440440074
+      Player_3: 975305732
+      Player_28: -1522171411
+      Player_26: -925508701
+      Player_5: 464622713
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
