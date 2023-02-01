@@ -57,14 +57,30 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Enemy.cs" />
+    <Compile Include="Assets\UpgradesSystem\UpgradeBase.cs" />
     <Compile Include="Assets\Animation\Player\PlayerAnimations.cs" />
+    <Compile Include="Assets\Scripts\BaseMechanics\IBerserk.cs" />
     <Compile Include="Assets\InputSystem\PlayerControlls.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Interactable.cs" />
+    <Compile Include="Assets\Scripts\BaseMechanics\IHarm.cs" />
+    <Compile Include="Assets\UpgradesSystem\BerserkUpgrade.cs" />
+    <Compile Include="Assets\Scripts\BaseMechanics\IMovement.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerSpawner.cs" />
+    <Compile Include="Assets\UpgradesSystem\GrowthUpgrade.cs" />
+    <Compile Include="Assets\Scripts\BaseMechanics\FakeImplementation\FakeMovement.cs" />
+    <Compile Include="Assets\Scripts\BaseMechanics\FakeImplementation\FakeBerserk.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
+    <Compile Include="Assets\UpgradesSystem\HarmUpgrade.cs" />
+    <Compile Include="Assets\UpgradesSystem\UpgradesManager.cs" />
+    <Compile Include="Assets\Scripts\BaseMechanics\FakeImplementation\FakeHarm.cs" />
+    <Compile Include="Assets\Scripts\BaseMechanics\IGrowth.cs" />
     <Compile Include="Assets\Scripts\UIController.cs" />
+    <Compile Include="Assets\UpgradesSystem\MovementUpgrade.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\UpgradesSystem\UpgradesManagerUI.cs" />
+    <Compile Include="Assets\Scripts\BaseMechanics\FakeImplementation\FakeGrowth.cs" />
+    <Compile Include="Assets\BackGround\Paralax.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

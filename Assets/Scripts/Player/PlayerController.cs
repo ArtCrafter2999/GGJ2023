@@ -43,11 +43,11 @@ public class PlayerController : MonoBehaviour
 	private float _gravityScale;
 	[Space(10)]
 	public int JumpsCount;
-    public bool IsJumping { get; private set; }
+	public bool IsJumping;
     private int _jumpsCountLeft;
 	[Header("Grab/Slide")]
 	public float GrabTime;
-    [Range(0, 1)]
+    [Range(0.1f, 1)]
     public float GrabLerp;
 	public float SlideSpeed;
 
@@ -58,20 +58,22 @@ public class PlayerController : MonoBehaviour
 	public Vector2 CheckSize;
 	[Space(10)]
 	public LayerMask GroundLayer;
-	
-	public enum Direction2
+    public LayerMask WallsLayer;
+
+    public enum Direction2
     {
 		Right,
 		Left
     }
 	public Direction2 LookingDirection { get; private set; } = Direction2.Right;
+	[SerializeField]
 	private bool _isGrabbing = false;
 	public bool IsGrabbing { get => _isGrabbing; private set { if (!_isGrabbing && value) StartCoroutine(LateSlide()); _isGrabbing = value; } }
 	public bool IsSliding { get; private set; }
 
     public Collider2D GroundCollider => Physics2D.OverlapBox(GroundCheckPoint.position, CheckSize, 0, GroundLayer);
-	public Collider2D RightCollider => Physics2D.OverlapBox(RightCheckPoint.position, CheckSize, 0, GroundLayer);
-	public Collider2D LeftCollider => Physics2D.OverlapBox(LeftCheckPoint.position, CheckSize, 0, GroundLayer);
+	public Collider2D RightCollider => Physics2D.OverlapBox(RightCheckPoint.position, Vector2.right * CheckSize, 0, WallsLayer);
+	public Collider2D LeftCollider => Physics2D.OverlapBox(LeftCheckPoint.position, Vector2.right * CheckSize, 0, WallsLayer);
 
 	public PlayerControlls PlayerControlls => GameManager.Instance.Controlls;
     #region Enable / Disable
@@ -117,7 +119,7 @@ public class PlayerController : MonoBehaviour
             _coyoteTimeLeft -= Time.deltaTime;
 		}
 
-		if (rb.velocity.y < 0)
+		if (rb.velocity.y < 0.01f)
 		{
 			IsJumping = false;
 		}
@@ -176,8 +178,8 @@ public class PlayerController : MonoBehaviour
 	}
 	private void FixedUpdate()
 	{
-		#region Run
-		float targetSpeed = MoveInput * MoveSpeed;
+        #region Run
+        float targetSpeed = MoveInput * MoveSpeed;
 		//calculate the direction we want to move in and our desired velocity
 		float speedDif = targetSpeed - rb.velocity.x;
 		//calculate difference between current velocity and desired velocity
@@ -203,7 +205,7 @@ public class PlayerController : MonoBehaviour
 		#region Jump Gravity
 		if (!IsGrabbing)
 		{
-			if (rb.velocity.y < 0)
+			if (rb.velocity.y < -0.01f)
 			{
 				rb.gravityScale = _gravityScale * FallGravityMultiplier;
 			}
@@ -263,6 +265,7 @@ public class PlayerController : MonoBehaviour
 			PlatformEffector2D platform;
 			if (GroundCollider.TryGetComponent(out platform))
 			{
+				
 				platform.rotationalOffset = 180;
 				StartCoroutine(LateActivatePlatform(platform));
 			}
