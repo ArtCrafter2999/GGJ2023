@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
 {
 	[Header("References")]
 	private Rigidbody2D rb;
+	private Health health;
+	private Growther growther;
 
 	[Header("Movement")]
 	public float MoveSpeed;
@@ -96,16 +98,25 @@ public class PlayerController : MonoBehaviour
         PlayerControlls.Player.Enable();
         PlayerControlls.Player.Jump.performed += ctx => Jump();
 		PlayerControlls.Player.Jump.canceled += ctx => OnJumpUp();
+<<<<<<< HEAD
 		GetComponent<Health>().OnDeath.AddListener(OnDisable);
 
         rb = GetComponent<Rigidbody2D>();
+=======
+
+		rb = GetComponent<Rigidbody2D>();
+		health = GetComponentInChildren<Health>();
+		growther = GetComponentInChildren<Growther>();
+>>>>>>> 1ebc1a7ef93eab54a390f9952ab798f8b2761746
 
 		_gravityScale = rb.gravityScale;
 	}
 
     private void Update()
 	{
-        MoveInput = PlayerControlls.Player.Move.ReadValue<float>();
+		if (health.IsDead || growther.IsGrowthing) return;
+
+		MoveInput = PlayerControlls.Player.Move.ReadValue<float>();
         if (!IsGrabbing)ChangeDirection();
 		GrabCheck();
 		GrabWork();
@@ -181,8 +192,10 @@ public class PlayerController : MonoBehaviour
 	}
 	private void FixedUpdate()
 	{
-        #region Run
-        float targetSpeed = MoveInput * MoveSpeed;
+		if (health.IsDead || growther.IsGrowthing) return;
+
+		#region Run
+		float targetSpeed = MoveInput * MoveSpeed;
 		//calculate the direction we want to move in and our desired velocity
 		float speedDif = targetSpeed - rb.velocity.x;
 		//calculate difference between current velocity and desired velocity
