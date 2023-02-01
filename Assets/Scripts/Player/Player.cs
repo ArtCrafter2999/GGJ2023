@@ -5,6 +5,10 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private PlayerController Controller => GameManager.Instance.PlayerController;
+    
+    public Health health;
+    public Growther growther;
+
     public Transform CameraPoint;
     public Transform AttackPoint;
 
@@ -17,6 +21,8 @@ public class Player : MonoBehaviour
     private Coroutine _cameraChangePosition;
     private void Update()
     {
+        if (health.IsDead || growther.IsGrowthing) return;
+
         switch (Controller.LookingDirection)
         {
             case PlayerController.Direction2.Right:
@@ -48,11 +54,16 @@ public class Player : MonoBehaviour
     }
     void Attack()
     {
-        var enemies = Physics2D.OverlapCircleAll(AttackPoint.position, Mathf.Abs(AttackPoint.localPosition.x) - 0.6f);
-        foreach(var collider in enemies)
+        // јтака = пророщение (Growth)
+        
+        var col = Physics2D.OverlapCircle(AttackPoint.position, Mathf.Abs(AttackPoint.localPosition.x) - 0.6f);
+        print(col);
+        Enemy en = col?.GetComponentInParent<Enemy>();
+        if (en)
         {
-            //—юди вставити атаку//////////////////////////////////////////////////
+            growther.GrowInTarget(en);
         }
+        
     }
     void Interact()
     {

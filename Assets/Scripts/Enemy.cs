@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class Enemy : MonoBehaviour
 {
@@ -24,21 +25,37 @@ public class Enemy : MonoBehaviour
     public Collider2D LeftGroundCollider => Physics2D.OverlapBox(GroundCheckPointLeft.position, GroundCheckSize, 0, GroundAndWallLayer);
     public Collider2D RightWallCollider => Physics2D.OverlapBox(WallCheckPointRight.position, WallCheckSize, 0, GroundAndWallLayer);
     public Collider2D LeftWallCollider => Physics2D.OverlapBox(WallCheckPointLeft.position, WallCheckSize, 0, GroundAndWallLayer);
+    public Health Health => health;
+
+    public bool IsUnderGrowth { get; set; }
 
     private bool _right;
     private Rigidbody2D rb;
+    private Health health;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        health = GetComponentInParent<Health>();
         _right = Random.Range(0, 2) == 1;
         StartCoroutine(Walk());
     }
 
+    private void Update()
+    {
+        if (health.IsDead)
+        {
+            Death();
+        }
+    }
+
     IEnumerator Walk()
     {
-        while (true)
+        while (health.IsDead)
         {
             yield return new WaitForSeconds(MoveCooldown);
+            yield return new WaitWhile(() => IsUnderGrowth);
+            
             while (!(_right ? RightWallCollider : LeftWallCollider) && (_right ? RightGroundCollider : LeftGroundCollider))
             {
                 yield return new WaitForFixedUpdate();
@@ -58,7 +75,7 @@ public class Enemy : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         var colObject = collision.gameObject;
-        if (_canAttack && colObject == GameManager.Instance.Player)
+        if (!health.IsDead && _canAttack && !IsUnderGrowth && colObject == GameManager.Instance.Player)
         {
             _canAttack = false;
             StartCoroutine(Cooldown());
