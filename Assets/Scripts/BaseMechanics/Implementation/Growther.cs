@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -12,6 +13,8 @@ public class Growther : MonoBehaviour, IGrowth
     [field: SerializeField] public float GrowthTime { get; set; }
 
     public bool IsGrowthing { get; private set; }
+
+    public event Action DidGrowth;
 
     public void GrowInTarget(Enemy enemy)
     {
@@ -37,7 +40,9 @@ public class Growther : MonoBehaviour, IGrowth
             yield return new WaitForSeconds(1f);
             time -= 1f;
         }
-        
+
+        DidGrowth?.Invoke();
+
         enemy.Health.ChangeHealth(-999);
         IsGrowthing = false;
         enemy.IsUnderGrowth = false;

@@ -58,7 +58,7 @@ public class Player : MonoBehaviour
         
         var col = Physics2D.OverlapCircle(AttackPoint.position, Mathf.Abs(AttackPoint.localPosition.x) - 0.6f);
         print(col);
-        Enemy en = col.GetComponentInParent<Enemy>();
+        Enemy en = col?.GetComponentInParent<Enemy>();
         if (en)
         {
             growther.GrowInTarget(en);

@@ -801,9 +801,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4593193414474998487}
   - component: {fileID: 8522059480332519232}
-  - component: {fileID: 4783743618639246200}
   - component: {fileID: 4881464538629418774}
   - component: {fileID: 1877541852771979959}
+  - component: {fileID: 2570393660645574997}
   m_Layer: 0
   m_Name: Mechanics
   m_TagString: Untagged
@@ -839,18 +839,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 100
---- !u!114 &4783743618639246200
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2745446431184202649}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66a0492fa5fac4f2592e6729db3216e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4881464538629418774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -883,6 +871,22 @@ MonoBehaviour:
   rbody: {fileID: 5931719977870301}
   col: {fileID: 5845592930911401723}
   <GrowthTime>k__BackingField: 3
+--- !u!114 &2570393660645574997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2745446431184202649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 113fac06c9436b7469d8c70b9127fdb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  growther: {fileID: 1877541852771979959}
+  intervalToEffect: 5
+  movespeedMultiplier: 2
+  effectDuration: 5
 --- !u!1 &4585058256880736382
 GameObject:
   m_ObjectHideFlags: 0
