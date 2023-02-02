@@ -11,6 +11,7 @@ public class SelfHarmer : MonoBehaviour, IHarm
 
     void Start()
     {
+        print("SelfHarmer start gameobject:" + gameObject);
         StartCoroutine(DoLostHealth());
     }
 

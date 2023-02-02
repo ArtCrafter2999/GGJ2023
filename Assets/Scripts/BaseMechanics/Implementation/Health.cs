@@ -19,12 +19,9 @@ public class Health : MonoBehaviour
     public void ChangeHealth(float value)
     {
         CurrentHealth = Mathf.Clamp(CurrentHealth + value, 0, MaxHealth);
-        
-        Debug.Log("Take damage: " + value + ", remain: " + CurrentHealth, this);
 
         if ((int) CurrentHealth == 0)
         {
-            Debug.Log("Dead", this);
             OnDeath?.Invoke();
             IsDead = true;
         }
