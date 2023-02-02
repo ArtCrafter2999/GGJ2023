@@ -98,16 +98,11 @@ public class PlayerController : MonoBehaviour
         PlayerControlls.Player.Enable();
         PlayerControlls.Player.Jump.performed += ctx => Jump();
 		PlayerControlls.Player.Jump.canceled += ctx => OnJumpUp();
-<<<<<<< HEAD
-		GetComponent<Health>().OnDeath.AddListener(OnDisable);
-
-        rb = GetComponent<Rigidbody2D>();
-=======
 
 		rb = GetComponent<Rigidbody2D>();
 		health = GetComponentInChildren<Health>();
 		growther = GetComponentInChildren<Growther>();
->>>>>>> 1ebc1a7ef93eab54a390f9952ab798f8b2761746
+		health.OnDeath += OnDisable;
 
 		_gravityScale = rb.gravityScale;
 	}

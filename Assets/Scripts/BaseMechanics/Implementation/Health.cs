@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class Health : MonoBehaviour
 {
@@ -7,6 +8,8 @@ public class Health : MonoBehaviour
     public float CurrentHealth { get; private set; }
 
     public bool IsDead { get; private set; }
+    
+    public event Action OnDeath;
 
     private void Awake()
     {
@@ -22,6 +25,7 @@ public class Health : MonoBehaviour
         if ((int) CurrentHealth == 0)
         {
             Debug.Log("Dead", this);
+            OnDeath?.Invoke();
             IsDead = true;
         }
     }

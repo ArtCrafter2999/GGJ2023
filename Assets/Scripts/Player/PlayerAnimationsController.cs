@@ -13,7 +13,7 @@ public class PlayerAnimationsController : MonoBehaviour
     void Start()
     {
         Controller.PlayerControlls.Player.Jump.performed += ctx => Animator.SetTrigger("Jump");
-        Health.OnDeath.AddListener(() => Animator.SetTrigger("Death"));
+        Health.OnDeath += () => Animator.SetTrigger("Death");
         Animator.GetBehaviour<PlayerBehaviour>().OnExit.AddListener(() => gameObject.SetActive(false));
     }
 
