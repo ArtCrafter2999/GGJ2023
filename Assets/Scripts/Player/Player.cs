@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
         GameManager.Instance.Player = gameObject;
         GameManager.Instance.Controlls.Player.Attack.performed += ctx => Attack();
         GameManager.Instance.Controlls.Player.Interact.performed += ctx => Interact();
+        health.OnDeath += () => { gameObject.SetActive(false); };
     }
     private Coroutine _cameraChangePosition;
     private void Update()

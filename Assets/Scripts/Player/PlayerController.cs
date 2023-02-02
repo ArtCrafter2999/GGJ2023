@@ -249,11 +249,12 @@ public class PlayerController : MonoBehaviour
                 rb.AddForce(Vector2.right * JumpForce * rb.gravityScale, ForceMode2D.Impulse);
                 
             }
-			
+            _coyoteTimeLeft = 0;
             IsJumping = true;
         }
 		else if ((_jumpsCountLeft > 0 || _coyoteTimeLeft > 0) || (GroundCollider && !IsJumping) ) //checks if was last grounded within coyoteTime and that jump has been pressed within bufferTime
 		{
+			_coyoteTimeLeft = 0;
             rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.AddForce(Vector2.up * JumpForce * rb.gravityScale, ForceMode2D.Impulse);
 			IsJumping = true;

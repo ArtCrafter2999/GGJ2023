@@ -13,8 +13,11 @@ public class PlayerAnimationsController : MonoBehaviour
     void Start()
     {
         Controller.PlayerControlls.Player.Jump.performed += ctx => Animator.SetTrigger("Jump");
-        Health.OnDeath += () => Animator.SetTrigger("Death");
-        Animator.GetBehaviour<PlayerBehaviour>().OnExit.AddListener(() => gameObject.SetActive(false));
+        Health.OnDeath += () =>
+        {
+            Sprite.gameObject.transform.parent = Sprite.gameObject.transform.parent.transform.parent;
+            Animator.SetTrigger("Death");
+        };
     }
 
     // Update is called once per frame

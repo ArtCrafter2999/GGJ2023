@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{8DFD9F68-FC1E-7734-2864-635FBFF74D2D}</ProjectGuid>
+    <ProjectGuid>{462E16EC-D241-3D33-4EAB-4F0E432D9EE2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -66,24 +66,29 @@
     <Compile Include="Assets\UpgradesSystem\BerserkUpgrade.cs" />
     <Compile Include="Assets\Scripts\BaseMechanics\IMovement.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerSpawner.cs" />
+    <Compile Include="Assets\Scripts\BaseMechanics\Implementation\Health.cs" />
     <Compile Include="Assets\UpgradesSystem\GrowthUpgrade.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerAnimationsController.cs" />
     <Compile Include="Assets\Scripts\BaseMechanics\FakeImplementation\FakeMovement.cs" />
     <Compile Include="Assets\Scripts\BaseMechanics\FakeImplementation\FakeBerserk.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
     <Compile Include="Assets\UpgradesSystem\HarmUpgrade.cs" />
+    <Compile Include="Assets\Scripts\Spikes.cs" />
     <Compile Include="Assets\UpgradesSystem\UpgradesManager.cs" />
     <Compile Include="Assets\Scripts\BaseMechanics\FakeImplementation\FakeHarm.cs" />
     <Compile Include="Assets\Scripts\BaseMechanics\IGrowth.cs" />
     <Compile Include="Assets\Scripts\UIController.cs" />
+    <Compile Include="Assets\Scripts\BaseMechanics\Implementation\Growther.cs" />
+    <Compile Include="Assets\Scripts\BaseMechanics\Implementation\Berserker.cs" />
+    <Compile Include="Assets\Scripts\BaseMechanics\Implementation\SelfHarmer.cs" />
     <Compile Include="Assets\UpgradesSystem\MovementUpgrade.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\UpgradesSystem\UpgradesManagerUI.cs" />
     <Compile Include="Assets\Scripts\BaseMechanics\FakeImplementation\FakeGrowth.cs" />
     <Compile Include="Assets\BackGround\Paralax.cs" />
-    <Compile Include="Assets\Scripts\Player\Health.cs" />
-    <Compile Include="Assets\Scripts\Spikes.cs" />
-    <Compile Include="Assets\Animation\Player\PlayerBehaviour.cs" />
+    <Compile Include="Assets\Prefabs\Press\Press.cs" />
+    <Compile Include="Assets\Prefabs\Press\PressTimer.cs" />
+    <Compile Include="Assets\Prefabs\Press\PressDetector.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -891,7 +896,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{0C41F66B-B9DF-45C2-9613-2381B2E4C726}</Project>
+      <Project>{CE7F45EA-337A-9D03-25F4-28587E9E43A5}</Project>
       <Name>Assembly-CSharp-firstpass</Name>
     </ProjectReference>
   </ItemGroup>
