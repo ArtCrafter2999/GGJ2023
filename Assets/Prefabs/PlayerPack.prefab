@@ -283,7 +283,7 @@ MonoBehaviour:
   m_Follow: {fileID: 2692484667243030882}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 5
+    OrthographicSize: 7
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -361,7 +361,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 7
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -856,7 +856,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: {fileID: 7767337839564838709}
   growther: {fileID: 311609681311475208}
-  <LostHealth>k__BackingField: 10
+  <LostHealth>k__BackingField: 0
 --- !u!114 &311609681311475208
 MonoBehaviour:
   m_ObjectHideFlags: 0

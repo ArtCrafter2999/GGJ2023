@@ -63,6 +63,8 @@
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Interactable.cs" />
     <Compile Include="Assets\Scripts\BaseMechanics\IHarm.cs" />
+    <Compile Include="Assets\Prefabs\Press\PressDetector.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerSoundsController.cs" />
     <Compile Include="Assets\UpgradesSystem\BerserkUpgrade.cs" />
     <Compile Include="Assets\Scripts\BaseMechanics\IMovement.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerSpawner.cs" />
@@ -72,12 +74,15 @@
     <Compile Include="Assets\Scripts\BaseMechanics\FakeImplementation\FakeMovement.cs" />
     <Compile Include="Assets\Scripts\BaseMechanics\FakeImplementation\FakeBerserk.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
+    <Compile Include="Assets\Prefabs\Press\Press.cs" />
     <Compile Include="Assets\UpgradesSystem\HarmUpgrade.cs" />
     <Compile Include="Assets\Scripts\Spikes.cs" />
     <Compile Include="Assets\UpgradesSystem\UpgradesManager.cs" />
     <Compile Include="Assets\Scripts\BaseMechanics\FakeImplementation\FakeHarm.cs" />
     <Compile Include="Assets\Scripts\BaseMechanics\IGrowth.cs" />
+    <Compile Include="Assets\Prefabs\Press\PressTimer.cs" />
     <Compile Include="Assets\Scripts\UIController.cs" />
+    <Compile Include="Assets\Animation\Player\PlayerBehaviour.cs" />
     <Compile Include="Assets\Scripts\BaseMechanics\Implementation\Growther.cs" />
     <Compile Include="Assets\Scripts\BaseMechanics\Implementation\Berserker.cs" />
     <Compile Include="Assets\Scripts\BaseMechanics\Implementation\SelfHarmer.cs" />
@@ -86,9 +91,6 @@
     <Compile Include="Assets\UpgradesSystem\UpgradesManagerUI.cs" />
     <Compile Include="Assets\Scripts\BaseMechanics\FakeImplementation\FakeGrowth.cs" />
     <Compile Include="Assets\BackGround\Paralax.cs" />
-    <Compile Include="Assets\Prefabs\Press\Press.cs" />
-    <Compile Include="Assets\Prefabs\Press\PressTimer.cs" />
-    <Compile Include="Assets\Prefabs\Press\PressDetector.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
