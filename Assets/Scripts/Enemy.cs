@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Http.Headers;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 
@@ -8,6 +9,7 @@ public class Enemy : MonoBehaviour
     [Header("Move")]
     public float MoveSpeed;
     public float MoveCooldown = 3f;
+    public float PatrolingDistance;
     [Header("Damage")]
     public float Damage = 10f;
     public float DamageCooldown = 0.5f;
@@ -32,13 +34,18 @@ public class Enemy : MonoBehaviour
     private bool _right;
     private Rigidbody2D rb;
     private Health health;
+    private Vector3 leftMovePoint, rightMovePoint, currentMovePoint;
+    private bool isPatroling = true;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         health = GetComponentInParent<Health>();
         _right = Random.Range(0, 2) == 1;
-        StartCoroutine(Walk());
+        currentMovePoint = _right ? rightMovePoint : leftMovePoint;
+        leftMovePoint = transform.position + Vector3.left * (PatrolingDistance / 2);
+        rightMovePoint = transform.position + Vector3.right * (PatrolingDistance / 2);
+        //StartCoroutine(Walk());
     }
 
     private void Update()
@@ -49,22 +56,45 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    IEnumerator Walk()
+    private void FixedUpdate()
     {
-        while (health.IsDead)
+        if (isPatroling)
         {
-            yield return new WaitForSeconds(MoveCooldown);
-            yield return new WaitWhile(() => IsUnderGrowth);
-            
-            while (!(_right ? RightWallCollider : LeftWallCollider) && (_right ? RightGroundCollider : LeftGroundCollider))
+            var dir = _right ? +1 : -1;
+            var step = Vector2.right * dir * MoveSpeed * Time.fixedDeltaTime;
+            rb.MovePosition(rb.position + step);
+            if (dir > 0 && rb.position.x >= currentMovePoint.x || dir < 0 && rb.position.x <= currentMovePoint.x)
             {
-                yield return new WaitForFixedUpdate();
-                rb.velocity = (MoveSpeed * (_right ? Vector2.right : Vector2.left)) * new Vector2(1, rb.velocity.y);
+                SwitchDirection();
             }
-            rb.velocity = new Vector2(0, rb.velocity.y);
-            _right = !_right;
         }
+        
     }
+
+    void SwitchDirection()
+    {
+        _right = !_right;
+        currentMovePoint = _right ? rightMovePoint : leftMovePoint;
+
+    }
+
+    //IEnumerator Walk()
+    //{
+    //    while (health.IsDead)
+    //    {
+    //        yield return new WaitForSeconds(MoveCooldown);
+    //        yield return new WaitWhile(() => IsUnderGrowth);
+
+    //        while (!(_right ? RightWallCollider : LeftWallCollider) && (_right ? RightGroundCollider : LeftGroundCollider))
+    //        {
+    //            yield return new WaitForFixedUpdate();
+    //            rb.velocity = (MoveSpeed * (_right ? Vector2.right : Vector2.left)) * new Vector2(1, rb.velocity.y);
+    //            print("vel: " + rb.velocity);
+    //        }
+    //        rb.velocity = new Vector2(0, rb.velocity.y);
+    //        _right = !_right;
+    //    }
+    //}
 
     void Death()
     {
@@ -85,5 +115,13 @@ public class Enemy : MonoBehaviour
     {
         yield return new WaitForSeconds(DamageCooldown);
         _canAttack = true;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        var leftMovePoint = transform.position + Vector3.left * (PatrolingDistance / 2);
+        var rightMovePoint = transform.position + Vector3.right * (PatrolingDistance / 2);
+        Gizmos.DrawLine(leftMovePoint, rightMovePoint);
     }
 }
