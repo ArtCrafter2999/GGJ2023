@@ -8,7 +8,7 @@ public class Spikes : MonoBehaviour
     {
         if(other.gameObject == GameManager.Instance.Player)
         {
-            GameManager.Instance.Player.GetComponent<Health>().ChangeHealth(-100);
+            GameManager.Instance.Player.GetComponent<Health>().ChangeHealth(-999);
         }
     }
 }
