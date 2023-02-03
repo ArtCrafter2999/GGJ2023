@@ -81,6 +81,13 @@ public class PlayerController : MonoBehaviour
 	public Collider2D LeftCollider => Physics2D.OverlapBox(LeftCheckPoint.position, Vector2.right * CheckSize, 0, WallsLayer);
 	public Collider2D CeilingCollider => Physics2D.OverlapBox(CeilingCheckPoint.position, Vector2.up * CheckSize, 0, WallsLayer);
     public PlayerControlls PlayerControlls => GameManager.Instance.Controlls;
+
+	public event Action Dropped;
+	public event Action Jumped;
+	public event Action DoubleJumped;
+
+	private float lastFallSpeed;
+
     #region Enable / Disable
     private void OnEnable()
 	{
@@ -115,7 +122,6 @@ public class PlayerController : MonoBehaviour
         if (!IsGrabbing)ChangeDirection();
 		GrabCheck();
 		GrabWork();
-		
 
 		#region Checks
 		if (GroundCollider && !IsJumping) //checks if set box overlaps with ground
@@ -127,6 +133,11 @@ public class PlayerController : MonoBehaviour
 		{
             _coyoteTimeLeft -= Time.deltaTime;
 		}
+		
+		if (GroundCollider && lastFallSpeed > 1 && Mathf.Abs(rb.velocity.y) < 0.01f)
+        {
+			Dropped?.Invoke();
+        }
 
 		if (rb.velocity.y < 0.01f)
 		{
@@ -134,6 +145,7 @@ public class PlayerController : MonoBehaviour
 		}
 		#endregion
 
+		lastFallSpeed = Mathf.Abs(rb.velocity.y);
 
 	}
 
@@ -257,6 +269,15 @@ public class PlayerController : MonoBehaviour
 			_coyoteTimeLeft = 0;
             rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.AddForce(Vector2.up * JumpForce * rb.gravityScale, ForceMode2D.Impulse);
+
+			if (_jumpsCountLeft >= JumpsCount)
+            {
+				Jumped?.Invoke();
+            }
+			else
+            {
+				DoubleJumped?.Invoke();
+            }
 			IsJumping = true;
 		}
 		_jumpsCountLeft--;
