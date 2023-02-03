@@ -76,10 +76,10 @@ public class PlayerController : MonoBehaviour
 	public bool IsSliding { get; private set; }
 	public bool IsCeiling => CeilingCollider;
 
-    public Collider2D GroundCollider => Physics2D.OverlapBox(GroundCheckPoint.position, Vector2.up * CheckSize, 0, GroundLayer);
-	public Collider2D RightCollider => Physics2D.OverlapBox(RightCheckPoint.position, Vector2.right * CheckSize, 0, WallsLayer);
-	public Collider2D LeftCollider => Physics2D.OverlapBox(LeftCheckPoint.position, Vector2.right * CheckSize, 0, WallsLayer);
-	public Collider2D CeilingCollider => Physics2D.OverlapBox(CeilingCheckPoint.position, Vector2.up * CheckSize, 0, WallsLayer);
+    public Collider2D GroundCollider => Physics2D.OverlapBox(GroundCheckPoint.position, (Vector2.up + Vector2.right / 10) * CheckSize, 0, GroundLayer);
+	public Collider2D RightCollider => Physics2D.OverlapBox(RightCheckPoint.position, (Vector2.right + Vector2.up / 10) * CheckSize, 0, WallsLayer);
+	public Collider2D LeftCollider => Physics2D.OverlapBox(LeftCheckPoint.position, (Vector2.right + Vector2.up / 10) * CheckSize, 0, WallsLayer);
+	public Collider2D CeilingCollider => Physics2D.OverlapBox(CeilingCheckPoint.position, (Vector2.up + Vector2.right / 10) * CheckSize, 0, WallsLayer);
     public PlayerControlls PlayerControlls => GameManager.Instance.Controlls;
 
 	public event Action Dropped;
@@ -116,6 +116,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
 	{
+		print(GroundCollider);
 		if (health.IsDead || growther.IsGrowthing) return;
 
 		MoveInput = PlayerControlls.Player.Move.ReadValue<float>();

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PressDetector : Press
@@ -30,7 +31,6 @@ public class PressDetector : Press
                 yield return new WaitForFixedUpdate();
                 var hit = Physics2D.Raycast(StopPoint.position, Vector2.down, MaxDetectionDistance, DetectionLayers);
                 detected = hit.collider;
-                print(hit.collider);
             }
 
             yield return new WaitForSeconds(Delay);
