@@ -1081,30 +1081,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e29c51df21a62546977fe2dee5ca5b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 3
-  MoveCooldown: 3
-  PatrolingDistance: 0
-  Damage: 10
-  DamageCooldown: 0.5
-  GroundCheckPointRight: {fileID: 1490482865}
-  GroundCheckPointLeft: {fileID: 1494492253}
-  WallCheckPointRight: {fileID: 2088254428}
-  WallCheckPointLeft: {fileID: 1592051923}
-  GroundCheckSize: {x: 0.4, y: 1.5}
-  WallCheckSize: {x: 0.4, y: 0}
-  GroundAndWallLayer:
-    m_Bits: 64
-  renderer: {fileID: 0}
-  <IsUnderGrowth>k__BackingField: 0
-  _right: 0
-  rb: {fileID: 0}
-  health: {fileID: 0}
-  leftMovePoint: {x: 0, y: 0, z: 0}
-  rightMovePoint: {x: 0, y: 0, z: 0}
-  currentMovePoint: {x: 0, y: 0, z: 0}
-  isPatroling: 1
-  player: {fileID: 0}
-  _canAttack: 1
 --- !u!70 &680864455
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1755,30 +1731,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e29c51df21a62546977fe2dee5ca5b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 3
-  MoveCooldown: 3
-  PatrolingDistance: 0
-  Damage: 10
-  DamageCooldown: 0.5
-  GroundCheckPointRight: {fileID: 1448605724}
-  GroundCheckPointLeft: {fileID: 187410307}
-  WallCheckPointRight: {fileID: 265553486}
-  WallCheckPointLeft: {fileID: 660285700}
-  GroundCheckSize: {x: 0.4, y: 1.5}
-  WallCheckSize: {x: 0.4, y: 0}
-  GroundAndWallLayer:
-    m_Bits: 64
-  renderer: {fileID: 0}
-  <IsUnderGrowth>k__BackingField: 0
-  _right: 0
-  rb: {fileID: 0}
-  health: {fileID: 0}
-  leftMovePoint: {x: 0, y: 0, z: 0}
-  rightMovePoint: {x: 0, y: 0, z: 0}
-  currentMovePoint: {x: 0, y: 0, z: 0}
-  isPatroling: 1
-  player: {fileID: 0}
-  _canAttack: 1
 --- !u!70 &849213334
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -3579,7 +3531,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1356139824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3708,30 +3660,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e29c51df21a62546977fe2dee5ca5b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 3
-  MoveCooldown: 3
-  PatrolingDistance: 0
-  Damage: 10
-  DamageCooldown: 0.5
-  GroundCheckPointRight: {fileID: 487792305}
-  GroundCheckPointLeft: {fileID: 1536148033}
-  WallCheckPointRight: {fileID: 1183822388}
-  WallCheckPointLeft: {fileID: 952913938}
-  GroundCheckSize: {x: 0.4, y: 1.5}
-  WallCheckSize: {x: 0.4, y: 0}
-  GroundAndWallLayer:
-    m_Bits: 64
-  renderer: {fileID: 0}
-  <IsUnderGrowth>k__BackingField: 0
-  _right: 0
-  rb: {fileID: 0}
-  health: {fileID: 0}
-  leftMovePoint: {x: 0, y: 0, z: 0}
-  rightMovePoint: {x: 0, y: 0, z: 0}
-  currentMovePoint: {x: 0, y: 0, z: 0}
-  isPatroling: 1
-  player: {fileID: 0}
-  _canAttack: 1
 --- !u!70 &1362291983
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -4033,30 +3961,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e29c51df21a62546977fe2dee5ca5b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 3
-  MoveCooldown: 3
-  PatrolingDistance: 0
-  Damage: 10
-  DamageCooldown: 0.5
-  GroundCheckPointRight: {fileID: 1342492789}
-  GroundCheckPointLeft: {fileID: 1311452481}
-  WallCheckPointRight: {fileID: 928712493}
-  WallCheckPointLeft: {fileID: 1551603258}
-  GroundCheckSize: {x: 0.4, y: 1.5}
-  WallCheckSize: {x: 0.4, y: 0}
-  GroundAndWallLayer:
-    m_Bits: 64
-  renderer: {fileID: 0}
-  <IsUnderGrowth>k__BackingField: 0
-  _right: 0
-  rb: {fileID: 0}
-  health: {fileID: 0}
-  leftMovePoint: {x: 0, y: 0, z: 0}
-  rightMovePoint: {x: 0, y: 0, z: 0}
-  currentMovePoint: {x: 0, y: 0, z: 0}
-  isPatroling: 1
-  player: {fileID: 0}
-  _canAttack: 1
 --- !u!70 &1503196455
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -4209,30 +4113,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e29c51df21a62546977fe2dee5ca5b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 3
-  MoveCooldown: 3
-  PatrolingDistance: 0
-  Damage: 10
-  DamageCooldown: 0.5
-  GroundCheckPointRight: {fileID: 1672975003}
-  GroundCheckPointLeft: {fileID: 2115781760}
-  WallCheckPointRight: {fileID: 878306352}
-  WallCheckPointLeft: {fileID: 137610643}
-  GroundCheckSize: {x: 0.4, y: 1.5}
-  WallCheckSize: {x: 0.4, y: 0}
-  GroundAndWallLayer:
-    m_Bits: 64
-  renderer: {fileID: 0}
-  <IsUnderGrowth>k__BackingField: 0
-  _right: 0
-  rb: {fileID: 0}
-  health: {fileID: 0}
-  leftMovePoint: {x: 0, y: 0, z: 0}
-  rightMovePoint: {x: 0, y: 0, z: 0}
-  currentMovePoint: {x: 0, y: 0, z: 0}
-  isPatroling: 1
-  player: {fileID: 0}
-  _canAttack: 1
 --- !u!70 &1552431067
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -4927,16 +4807,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4220761163097836131, guid: 3a83fdeea9e3ea4469c0df85be4d7de1, type: 3}
-      propertyPath: attackRate
-      value: 1
+      propertyPath: bulletForce
+      value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 4220761163097836131, guid: 3a83fdeea9e3ea4469c0df85be4d7de1, type: 3}
-      propertyPath: shootRangee
-      value: 4.61
-      objectReference: {fileID: 0}
-    - target: {fileID: 4220761163097836131, guid: 3a83fdeea9e3ea4469c0df85be4d7de1, type: 3}
-      propertyPath: bulletPrefab
-      value: 
-      objectReference: {fileID: 6839013644605494021, guid: ef0443b8e5b504544bf6ea1780cd59b2, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a83fdeea9e3ea4469c0df85be4d7de1, type: 3}

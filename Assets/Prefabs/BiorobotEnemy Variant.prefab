@@ -153,11 +153,13 @@ MonoBehaviour:
   GroundAndWallLayer:
     serializedVersion: 2
     m_Bits: 64
-  attackRate: 0
+  attackRate: 1.5
   renderer: {fileID: 2837551019643340088}
+  shootRangee: 12
   shootPoint: {fileID: 1171659084601577000}
-  bulletPrefab: {fileID: 2837551020077949894}
-  bulletForce: 100
+  bulletPrefab: {fileID: 8653572466801913077, guid: ef0443b8e5b504544bf6ea1780cd59b2, type: 3}
+  bulletSpeed: 6
+  heightToDetect: 3
 --- !u!4 &2837551020077949914 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4079122894753021483, guid: 609118dddfa404d4cbcaaa61c0a077ad, type: 3}

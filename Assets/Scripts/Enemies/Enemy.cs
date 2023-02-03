@@ -88,9 +88,14 @@ public abstract class Enemy : MonoBehaviour
     void SwitchDirection()
     {
         _right = !_right;
+        UpdateDirection();
+
+    }
+
+    public void UpdateDirection()
+    {
         currentMovePoint = _right ? rightMovePoint : leftMovePoint;
         renderer.flipX = !_right;
-
     }
 
     //IEnumerator Walk()

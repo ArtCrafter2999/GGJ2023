@@ -4,8 +4,9 @@ public class BiorobotEnemy : Enemy
 {
     public float shootRangee; 
     public Transform shootPoint;
-    public GameObject bulletPrefab;
-    public float bulletForce;
+    public Bullet bulletPrefab;
+    public float bulletSpeed;
+    public float heightToDetect;
 
     bool canShoot;
 
@@ -17,8 +18,9 @@ public class BiorobotEnemy : Enemy
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
-        bool dir = (_right && player.LookingDirection == PlayerController.Direction2.Left ||
-                    !_right && player.LookingDirection == PlayerController.Direction2.Right);
+
+        bool onRightSide = transform.position.x < player.transform.position.x;
+        bool dir = !(_right ^ onRightSide);
         bool dist = (transform.position - player.transform.position).magnitude <= shootRangee;
         bool height = Mathf.Abs(transform.position.y - player.transform.position.y) <= 2f;
 
@@ -34,7 +36,7 @@ public class BiorobotEnemy : Enemy
     protected override void OnAttack()
     {
         var b = Instantiate(bulletPrefab, shootPoint);
-        b.GetComponent<Rigidbody2D>().AddForce(bulletForce * (_right ? Vector2.right : Vector2.left));
+        b.Launch(bulletSpeed * (_right ? +1 : -1));
     }
 
     protected override void OnDrawGizmos()
@@ -42,5 +44,7 @@ public class BiorobotEnemy : Enemy
         base.OnDrawGizmos();
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position + Vector3.up * 0.25f, shootRangee);
+        
+        Gizmos.DrawLine(transform.position + Vector3.up * heightToDetect / 2 + Vector3.right * 0.25f, transform.position + Vector3.down * heightToDetect / 2 + Vector3.right * 0.25f);
     }
 }
