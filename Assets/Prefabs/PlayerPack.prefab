@@ -1203,6 +1203,7 @@ MonoBehaviour:
   Health: {fileID: 7767337839564838709}
   walk: {fileID: 8300000, guid: 72b15cbb28a73f54ca14c0990a2fb65e, type: 3}
   jump: {fileID: 8300000, guid: 162469340939d1949856b89f187f54ff, type: 3}
+  doubleJump: {fileID: 8300000, guid: 81e1cf8aa31016941a2c9ad03cd89d62, type: 3}
   drop: {fileID: 8300000, guid: 19036eeb157b34c40bfb540aed85b0a8, type: 3}
   idle: {fileID: 8300000, guid: a4a0f728c0872fd41a364620410435a8, type: 3}
   death: {fileID: 8300000, guid: 8e186181ab36f504c9da80d6e23d3e67, type: 3}
