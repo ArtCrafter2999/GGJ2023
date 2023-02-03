@@ -188,6 +188,7 @@ MonoBehaviour:
   GroundAndWallLayer:
     serializedVersion: 2
     m_Bits: 64
+  renderer: {fileID: 4079122894381258953}
 --- !u!114 &4079122894753021481
 MonoBehaviour:
   m_ObjectHideFlags: 0
