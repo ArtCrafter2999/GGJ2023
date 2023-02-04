@@ -23,10 +23,10 @@ public class PlayerAnimationsController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Sprite.flipX = Controller.LookingDirection == PlayerController.Direction2.Left;
+        Sprite.flipX = Controller.LookingDirection == Direction2.Left;
         Animator.SetFloat("MovingSpeed", Mathf.Abs(Controller.MoveInput));
         Animator.SetBool("IsJumping", Controller.IsJumping);
-        Animator.SetBool("IsGrounded", Controller.GroundCollider);
+        Animator.SetBool("IsGrounded", Controller.IsOnGround);
         Animator.SetBool("IsGrabbing", Controller.IsGrabbing);
         Animator.SetBool("IsCeiling", Controller.IsCeiling);
     }

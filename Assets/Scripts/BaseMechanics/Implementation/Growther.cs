@@ -43,7 +43,7 @@ public class Growther : MonoBehaviour, IGrowth
 
         DidGrowth?.Invoke();
 
-        enemy.Health.ChangeHealth(-999);
+        enemy.Death();
         IsGrowthing = false;
         enemy.IsUnderGrowth = false;
         rbody.isKinematic = false;

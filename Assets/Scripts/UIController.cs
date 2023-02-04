@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class UIController : MonoBehaviour
     [SerializeField]
     private GameObject PauseObject;
 
+    public GameObject dialogPanel;
+    public TMP_Text dialogText;
+
     void Start()
     {
         GameManager.Instance.Controlls.UI.Pause.performed += (ctx) => Pause();
@@ -17,5 +21,17 @@ public class UIController : MonoBehaviour
     private void Pause()
     {
         PauseObject.SetActive(GameManager.Instance.IsPause);
+    }
+
+    public void StartDialog(string text)
+    {
+        dialogPanel.SetActive(true);
+        dialogText.text = text;
+    }
+
+    public void StopDialog()
+    {
+        dialogPanel.SetActive(false);
+        dialogText.text = string.Empty;
     }
 }
