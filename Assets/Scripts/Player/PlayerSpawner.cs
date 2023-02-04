@@ -9,4 +9,5 @@ public class PlayerSpawner : MonoBehaviour
     {
         Instantiate(Player, transform.position, Quaternion.identity); 
     }
+
 }

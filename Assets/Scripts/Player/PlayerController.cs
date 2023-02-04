@@ -105,7 +105,7 @@ public class PlayerController : MonoBehaviour
     private float lastFallSpeed;
 
     #region Enable / Disable
-    private void OnEnable()
+    public void OnEnable()
     {
         if (GameManager.Instance != null)
             PlayerControlls.Player.Enable();
@@ -278,7 +278,9 @@ public class PlayerController : MonoBehaviour
 
             }
             _coyoteTimeLeft = 0;
-            IsJumping = true;
+			
+			Jumped?.Invoke();
+			IsJumping = true;
         }
         else if ((_jumpsCountLeft > 0 || _coyoteTimeLeft > 0) || (IsOnGround && !IsJumping)) //checks if was last grounded within coyoteTime and that jump has been pressed within bufferTime
         {
