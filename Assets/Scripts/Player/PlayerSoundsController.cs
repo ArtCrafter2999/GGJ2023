@@ -5,6 +5,7 @@ public class PlayerSoundsController : MonoBehaviour
 {
     public AudioSource source;
     public AudioSource walkSource;
+    public AudioSource idleSource;
 
     public PlayerController Controller;
     public Health Health;
@@ -15,6 +16,10 @@ public class PlayerSoundsController : MonoBehaviour
     public AudioClip drop;
     public AudioClip idle;
     public AudioClip death;
+
+    [Range(0f, 1f)] public float jumpVolume;
+    [Range(0f, 1f)] public float dropVolume;
+    [Range(0f, 1f)] public float idleVolume;
     
     public float moveSoundInterval;
     public float idleSoundInterval;
@@ -22,16 +27,16 @@ public class PlayerSoundsController : MonoBehaviour
     public float walkFadeDuration;
 
     float moveTick, idleTick;
-    bool wasMoving;
+    bool wasMoving, wasIdle;
 
     // Start is called before the first frame update
     void Start()
     {
         idleTick = idleSoundInterval;
 
-        Controller.Jumped += () => PlayClip(jump);
-        Controller.DoubleJumped += () => PlayClip(doubleJump);
-        Controller.Dropped += () => PlayClip(drop);
+        Controller.Jumped += () => PlayClip(jump, jumpVolume);
+        Controller.DoubleJumped += () => PlayClip(doubleJump, jumpVolume);
+        Controller.Dropped += () => PlayClip(drop, dropVolume);
         Health.OnDeath += () => PlayClip(death);
     }
 
@@ -48,23 +53,28 @@ public class PlayerSoundsController : MonoBehaviour
             StopWalkClip();
         }
 
-        if (!Mathf.Approximately(Controller.MoveInput, 0f) || Controller.IsGrabbing || Controller.IsSliding)
+        bool idle = !(Mathf.Approximately(Controller.MoveInput, 0f) && !Controller.IsGrabbing && !Controller.IsSliding);
+        if (!wasIdle && idle)
         {
             idleTick = idleSoundInterval;
+        }
+        if (wasIdle && !idle)
+        {
+            StopIdleClip();
         }
 
         idleTick -= Time.deltaTime;
         if (idleTick <= 0)
         {
-            PlayClip(idle);
+            StartIdleClip();
             idleTick = idleSoundInterval;
         }
-        
+
         wasMoving = moving;
+        wasIdle = idle;
     }
 
-    void PlayClip(AudioClip clip) => source.PlayOneShot(clip);
-
+    void PlayClip(AudioClip clip, float volume = 1) => source.PlayOneShot(clip, volume);
     void StartWalkClip()
     {
         walkSource.DOFade(1, walkFadeDuration).From(0);
@@ -73,5 +83,15 @@ public class PlayerSoundsController : MonoBehaviour
     void StopWalkClip()
     {
         walkSource.DOFade(0, walkFadeDuration).From(1).OnComplete(walkSource.Stop);
+    }
+
+    void StartIdleClip()
+    {
+        idleSource.DOFade(idleVolume, walkFadeDuration).From(0);
+        idleSource.Play();
+    }
+    void StopIdleClip()
+    {
+        idleSource.DOFade(0, walkFadeDuration).From(idleVolume).OnComplete(idleSource.Stop);
     }
 }

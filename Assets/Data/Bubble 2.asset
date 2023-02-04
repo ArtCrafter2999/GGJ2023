@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 700f7eeffad0220489c288d371520a5a, type: 3}
+  m_Name: Bubble 2
+  m_EditorClassIdentifier: 
+  phrases:
+  - clip: {fileID: 8300000, guid: cfc4b9fae84dd164db2d29faac827cd3, type: 3}
+    dialogText: P -        Is it a flower? You said they`re all gone.
+  - clip: {fileID: 8300000, guid: 58097f813d2ba5244844a66aef7e625f, type: 3}
+    dialogText: 'T -        You are not allowed to ask questions!
+
+'
+  - clip: {fileID: 8300000, guid: 3ff1c3303ca7d8b41b52a1c700f7fb53, type: 3}
+    dialogText: 'P -        When I read the last thought, I saw a thing. The victim
+      called it the sky. His last thought was about the sky.
+
+'
+  - clip: {fileID: 8300000, guid: b07d7eecd69ffe44b82d97479af4d068, type: 3}
+    dialogText: "T -        It`s heresy! Your victims are just material. You must
+      continue.  \r\n"

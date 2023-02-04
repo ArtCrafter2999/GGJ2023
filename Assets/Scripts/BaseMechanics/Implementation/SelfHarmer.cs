@@ -9,9 +9,14 @@ public class SelfHarmer : MonoBehaviour, IHarm
 
     [field: SerializeField] public float LostHealth { get; set; }
 
-    void Start()
+    void OnEnable()
     {
         StartCoroutine(DoLostHealth());
+    }
+
+    void OnDisable()
+    {
+        StopAllCoroutines();
     }
 
     IEnumerator DoLostHealth()
