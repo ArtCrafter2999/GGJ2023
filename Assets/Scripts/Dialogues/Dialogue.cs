@@ -5,24 +5,31 @@ using UnityEngine.InputSystem;
 public class Dialogue : MonoBehaviour
 {
     public AudioSource source;
-    public Phrase[] phrases;
+    public DialogData dialogData;
 
     bool isPlaying;
-
     int currentPhraseIdx;
+    Phrase phrase;
+
+    PhraseData CurrentPhraseData => dialogData.phrases[currentPhraseIdx];
+
+    private void Awake()
+    {
+        phrase = new Phrase(source);
+    }
 
     private void Update()
     {
         if (isPlaying)
         {
-            if (Input.GetKeyDown(KeyCode.Space) || phrases[currentPhraseIdx].IsEnded)
+            if (Input.GetKeyDown(KeyCode.Space) || phrase.IsEnded)
             {
-                phrases[currentPhraseIdx].Stop();
+                phrase.Stop();
 
                 currentPhraseIdx++;
-                if (currentPhraseIdx < phrases.Length)
+                if (currentPhraseIdx < dialogData.phrases.Length)
                 {
-                    phrases[currentPhraseIdx].Play(source);
+                    phrase.Play(CurrentPhraseData);
                 }
                 else
                 {
@@ -38,7 +45,7 @@ public class Dialogue : MonoBehaviour
 
         isPlaying = true;
 
-        phrases[currentPhraseIdx].Play(source);
+        phrase.Play(CurrentPhraseData);
 
         GameManager.Instance.PlayerComponent.enabled = false;
         GameManager.Instance.PlayerController.enabled = false;

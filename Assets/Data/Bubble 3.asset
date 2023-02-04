@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 700f7eeffad0220489c288d371520a5a, type: 3}
+  m_Name: Bubble 3
+  m_EditorClassIdentifier: 
+  phrases:
+  - clip: {fileID: 8300000, guid: c2cdfab019d9835429a760d22b34dc1f, type: 3}
+    dialogText: 'P -        I`ve seen different thoughts, and now things are clear.
+
+'
+  - clip: {fileID: 8300000, guid: c80e6bb887ab78c45b4202f514fc0164, type: 3}
+    dialogText: 'T -        What do you mean?
+
+'
+  - clip: {fileID: 8300000, guid: e344bd7db7b7c374aa69d080cc85cd89, type: 3}
+    dialogText: "P -        I don`t want to kill for you, I`m\u2026 sorry.\r\n"
+  - clip: {fileID: 8300000, guid: 77dd786650ad0d349be0574634d40301, type: 3}
+    dialogText: 'T -        What did you just say?! You must kill!
+
+'
+  - clip: {fileID: 8300000, guid: 6403cac49efc5c943a83d3e97d234a17, type: 3}
+    dialogText: 'P -        No, I had to. But I don`t want to do it now. I`ve discovered
+      the truth.
+
+'
+  - clip: {fileID: 8300000, guid: 6403cac49efc5c943a83d3e97d234a17, type: 3}
+    dialogText: 'T -        This surface! Ok, you want to hear all the truth? Take
+      it: you feel sick because of the poison in the roots. It had to make you kill.
+      Otherwise you would be killed, so you had no choice. And I increased the dose
+      every time you went higher. It should`ve convinced you that being closer to
+      the surface and farther from me is dangerous. But now, I just don`t need you.
+      You are like a broken toy, but you are funny, so I`ll give you a chance. If
+      you survive, I will allow you to go to the surface.'
+  - clip: {fileID: 8300000, guid: fe547813d3c5f1b45a2148236b505915, type: 3}
+    dialogText: 'T -        So, want to try again?
+
+'

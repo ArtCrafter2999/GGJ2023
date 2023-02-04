@@ -1,22 +1,23 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-[Serializable]
 public class Phrase
 {
-    public AudioClip clip;
-    [TextArea] public string dialogText;
-
     AudioSource source;
+    PhraseData data;
 
-    public bool IsEnded => source.time >= clip.length;
-
-    public void Play(AudioSource source)
+    public Phrase(AudioSource source)
     {
         this.source = source;
+    }
 
-        UnityEngine.Object.FindObjectOfType<UIController>().StartDialog(dialogText);
-        source.clip = clip;
+    public bool IsEnded => source.time >= data.clip.length;
+
+    public void Play(PhraseData data)
+    {
+        this.data = data;
+
+        UnityEngine.Object.FindObjectOfType<UIController>().StartDialog(data.dialogText);
+        source.clip = data.clip;
         source.Play();
     }
 

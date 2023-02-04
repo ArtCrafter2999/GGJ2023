@@ -4480,6 +4480,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: d25cc4ca77d5f7047b14a5aa2d9f6d77, type: 3}
     - target: {fileID: 6585644611471679255, guid: 25f242c87b44141458f5788a25f2fc6d, type: 3}
+      propertyPath: dialogData
+      value: 
+      objectReference: {fileID: 11400000, guid: 7d0e375cdf3481041bc25a76e2324122, type: 2}
+    - target: {fileID: 6585644611471679255, guid: 25f242c87b44141458f5788a25f2fc6d, type: 3}
       propertyPath: dialogText
       value: "P -        I feel worse, why?\r\nT -     \tBecause you`re getting closer
         to the surface, my child. As I said, it`s a terrible place. There is no life.
