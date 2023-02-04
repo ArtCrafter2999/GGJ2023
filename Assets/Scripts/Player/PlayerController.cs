@@ -116,7 +116,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
 	{
-		print(GroundCollider);
+		//print(GroundCollider);
 		if (health.IsDead || growther.IsGrowthing) return;
 
 		MoveInput = PlayerControlls.Player.Move.ReadValue<float>();
