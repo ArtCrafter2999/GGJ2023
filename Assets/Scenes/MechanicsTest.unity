@@ -4426,11 +4426,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3988029049903203888, guid: 25f242c87b44141458f5788a25f2fc6d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.3
+      value: -3.45
       objectReference: {fileID: 0}
     - target: {fileID: 3988029049903203888, guid: 25f242c87b44141458f5788a25f2fc6d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.76
+      value: -7.62
       objectReference: {fileID: 0}
     - target: {fileID: 3988029049903203888, guid: 25f242c87b44141458f5788a25f2fc6d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4489,6 +4489,35 @@ PrefabInstance:
         You must kill! Or maybe you want your family to die?\r\nP -        I don`t!
         But\u2026 There must be an other way to save us.\r\nT -        There`s no
         other way! You must obey!.. my child.\r\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6585644611471679255, guid: 25f242c87b44141458f5788a25f2fc6d, type: 3}
+      propertyPath: phrases.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6585644611471679255, guid: 25f242c87b44141458f5788a25f2fc6d, type: 3}
+      propertyPath: phrases.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 3f9a7c723475b7b47b9ef0d58993fdcb, type: 3}
+    - target: {fileID: 6585644611471679255, guid: 25f242c87b44141458f5788a25f2fc6d, type: 3}
+      propertyPath: phrases.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 954329b46f7b125419f139ba71981c90, type: 3}
+    - target: {fileID: 6585644611471679255, guid: 25f242c87b44141458f5788a25f2fc6d, type: 3}
+      propertyPath: phrases.Array.data[2].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: b916e9d078e30b34c8052e9fc812a397, type: 3}
+    - target: {fileID: 6585644611471679255, guid: 25f242c87b44141458f5788a25f2fc6d, type: 3}
+      propertyPath: phrases.Array.data[0].dialogText
+      value: 1. T_ I saw your performance. You`re a talented killer and a savior
+        as well.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6585644611471679255, guid: 25f242c87b44141458f5788a25f2fc6d, type: 3}
+      propertyPath: phrases.Array.data[1].dialogText
+      value: 2. P_ Killing is so strange. I feel something that I can`t explain.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6585644611471679255, guid: 25f242c87b44141458f5788a25f2fc6d, type: 3}
+      propertyPath: phrases.Array.data[2].dialogText
+      value: 3. T_ Never mind. We need more biomaterial.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25f242c87b44141458f5788a25f2fc6d, type: 3}

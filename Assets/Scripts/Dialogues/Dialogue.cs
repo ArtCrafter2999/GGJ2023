@@ -1,18 +1,34 @@
-﻿using UnityEngine;
+﻿using Unity.Jobs;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Dialogue : MonoBehaviour
 {
     public AudioSource source;
-    [TextArea] public string dialogText;
+    public Phrase[] phrases;
 
     bool isPlaying;
 
+    int currentPhraseIdx;
+
     private void Update()
     {
-        if (isPlaying && Input.GetKeyDown(KeyCode.Space))
+        if (isPlaying)
         {
-            StopDialog();
+            if (Input.GetKeyDown(KeyCode.Space) || phrases[currentPhraseIdx].IsEnded)
+            {
+                phrases[currentPhraseIdx].Stop();
+
+                currentPhraseIdx++;
+                if (currentPhraseIdx < phrases.Length)
+                {
+                    phrases[currentPhraseIdx].Play(source);
+                }
+                else
+                {
+                    StopDialog();
+                }
+            }
         }
     }
 
@@ -20,10 +36,9 @@ public class Dialogue : MonoBehaviour
     {
         if (isPlaying) return;
 
-        FindObjectOfType<UIController>().StartDialog(dialogText);
-        source.time = 0;
-        source.Play();
         isPlaying = true;
+
+        phrases[currentPhraseIdx].Play(source);
 
         GameManager.Instance.PlayerComponent.enabled = false;
         GameManager.Instance.PlayerController.enabled = false;
@@ -34,7 +49,6 @@ public class Dialogue : MonoBehaviour
     void StopDialog()
     {
         FindObjectOfType<UIController>().StopDialog();
-        source.Stop();
         isPlaying = false;
         GameManager.Instance.PlayerComponent.enabled = true;
         GameManager.Instance.PlayerController.enabled = true;
