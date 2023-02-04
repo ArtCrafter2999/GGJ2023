@@ -26,12 +26,12 @@ public class Player : MonoBehaviour
 
         switch (Controller.LookingDirection)
         {
-            case PlayerController.Direction2.Right:
+            case Direction2.Right:
                 AttackPoint.localPosition = new Vector3(Mathf.Abs(AttackPoint.localPosition.x), AttackPoint.localPosition.y, AttackPoint.localPosition.z);
                 if (_cameraChangePosition != null) StopCoroutine(_cameraChangePosition);
                 _cameraChangePosition = StartCoroutine(SmoothChangePosition(CameraPoint, new Vector3(1.2f, CameraPoint.localPosition.y, CameraPoint.localPosition.z), 0.05f, true));
                 break;
-            case PlayerController.Direction2.Left:
+            case Direction2.Left:
                 AttackPoint.localPosition = new Vector3(-Mathf.Abs(AttackPoint.localPosition.x), AttackPoint.localPosition.y, AttackPoint.localPosition.z);
                 if (_cameraChangePosition != null) StopCoroutine(_cameraChangePosition);
                 _cameraChangePosition = StartCoroutine(SmoothChangePosition(CameraPoint, new Vector3(-1.2f, CameraPoint.localPosition.y, CameraPoint.localPosition.z), 0.05f, true));
@@ -68,7 +68,7 @@ public class Player : MonoBehaviour
     }
     void Interact()
     {
-        if (Controller.GroundCollider)
+        if (Controller.IsOnGround)
         {
             var objects = Physics2D.OverlapCircleAll(transform.position, 3);
             Interactable closest = objects[0].GetComponent<Interactable>();

@@ -4,151 +4,160 @@ using System.Net.Http.Headers;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 
-public abstract class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     [Header("Move")]
     public float MoveSpeed;
-    public float MoveCooldown = 3f;
-    public float PatrolingDistance;
-    [Header("Damage")]
-    public float Damage = 10f;
-    public float DamageCooldown = 0.5f;
-    [Header("Checks")]
-    public Transform GroundCheckPointRight;
-    public Transform GroundCheckPointLeft;
-    public Transform WallCheckPointRight;
-    public Transform WallCheckPointLeft;
-    public Vector2 GroundCheckSize;
-    public Vector2 WallCheckSize;
-    [Space(10)]
-    public LayerMask GroundAndWallLayer;
-
-    public float attackRate;
-    public SpriteRenderer renderer;
-
-    public Collider2D RightGroundCollider => Physics2D.OverlapBox(GroundCheckPointRight.position, GroundCheckSize, 0, GroundAndWallLayer);
-    public Collider2D LeftGroundCollider => Physics2D.OverlapBox(GroundCheckPointLeft.position, GroundCheckSize, 0, GroundAndWallLayer);
-    public Collider2D RightWallCollider => Physics2D.OverlapBox(WallCheckPointRight.position, WallCheckSize, 0, GroundAndWallLayer);
-    public Collider2D LeftWallCollider => Physics2D.OverlapBox(WallCheckPointLeft.position, WallCheckSize, 0, GroundAndWallLayer);
-    public Health Health => health;
-
+    public float RestTime = 3f;
+    public Transform PatrolingPointRight;
+    public Transform PatrolingPointLeft;
+    [Header("Detect")]
+    public float DetectRangee;
+    public LayerMask PlayerLayer;
+    [Header("Attack")]
+    public float AttackCooldown = 0.5f;
+    public GameObject ProjectilePrefab;
+    public Transform ShootPointLeft;
+    public Transform ShootPointRight;
+    [Header("View")]
+    public SpriteRenderer Sprite;
+    public Animator Animator;
     public bool IsUnderGrowth { get; set; }
-
-    protected bool _right;
+    private Direction2 _facing;
+    public Direction2 Facing
+    {
+        get => _facing; set
+        {
+            _facing = value;
+            _currentMovePoint = value == Direction2.Right ? PatrolingPointRight.position : PatrolingPointLeft.position;
+            Sprite.flipX = value == Direction2.Left;
+        }
+    }
     protected Rigidbody2D rb;
-    protected Health health;
-    protected Vector3 leftMovePoint, rightMovePoint, currentMovePoint;
-    protected bool isPatroling = true;
-    protected float attackCd;
+    protected Vector3 _currentMovePoint;
+    protected bool _isSeePLayer = false;
+    protected bool _isMoving;
+    protected float _cooldown;
     protected PlayerController player;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        health = GetComponentInParent<Health>();
-        
-        _right = Random.Range(0, 2) == 1;
-        currentMovePoint = _right ? rightMovePoint : leftMovePoint;
-        renderer.flipX = !_right;
 
-        leftMovePoint = transform.position + Vector3.left * (PatrolingDistance / 2);
-        rightMovePoint = transform.position + Vector3.right * (PatrolingDistance / 2);
-        //StartCoroutine(Walk());
-
-        player = FindObjectOfType<PlayerController>();
+        Facing = Random.Range(0, 2) == 1 ? Direction2.Right : Direction2.Left;
+        player = GameManager.Instance.PlayerController;
+        StartCoroutine(Move());
+        StartCoroutine(CheckForPlayer());
     }
 
-    protected virtual void Update()
+    void Update()
     {
-        if (health.IsDead)
-        {
-            Death();
-        }
-        
-        if (attackCd > 0)
-        {
-            attackCd -= Time.deltaTime;
-        }
+        Animator.SetBool("IsMoving", _isMoving);
     }
-
-    protected virtual void FixedUpdate()
+    private IEnumerator Move()
     {
-        if (isPatroling)
+        if (!IsUnderGrowth)
         {
-            var dir = _right ? +1 : -1;
-            var step = Vector2.right * dir * MoveSpeed * Time.fixedDeltaTime;
-            rb.MovePosition(rb.position + step);
-            if (dir > 0 && rb.position.x >= currentMovePoint.x || dir < 0 && rb.position.x <= currentMovePoint.x)
+            _isMoving = true;
+            while (!_isSeePLayer && _isMoving)
             {
-                SwitchDirection();
+                var dir = Facing == Direction2.Right ? +1 : -1;
+                var step = Vector2.right * dir * MoveSpeed * Time.fixedDeltaTime;
+                rb.MovePosition(rb.position + step);
+                if (Facing == Direction2.Right && rb.position.x >= _currentMovePoint.x ||
+                    Facing == Direction2.Left && rb.position.x <= _currentMovePoint.x)
+                {
+                    StartCoroutine(SwitchDirection());
+                    break;
+                }
+                yield return new WaitForFixedUpdate();
             }
         }
-    }
-
-    void SwitchDirection()
-    {
-        _right = !_right;
-        currentMovePoint = _right ? rightMovePoint : leftMovePoint;
-        renderer.flipX = !_right;
 
     }
-
-    //IEnumerator Walk()
-    //{
-    //    while (health.IsDead)
-    //    {
-    //        yield return new WaitForSeconds(MoveCooldown);
-    //        yield return new WaitWhile(() => IsUnderGrowth);
-
-    //        while (!(_right ? RightWallCollider : LeftWallCollider) && (_right ? RightGroundCollider : LeftGroundCollider))
-    //        {
-    //            yield return new WaitForFixedUpdate();
-    //            rb.velocity = (MoveSpeed * (_right ? Vector2.right : Vector2.left)) * new Vector2(1, rb.velocity.y);
-    //            print("vel: " + rb.velocity);
-    //        }
-    //        rb.velocity = new Vector2(0, rb.velocity.y);
-    //        _right = !_right;
-    //    }
-    //}
-
-    void Death()
+    private IEnumerator SwitchDirection()
     {
-        Destroy(gameObject);
-    }
-
-    private bool _canAttack = true;
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        var colObject = collision.gameObject;
-        if (!health.IsDead && _canAttack && !IsUnderGrowth && colObject == GameManager.Instance.Player)
+        _isMoving = false;
+        var seconds = RestTime;
+        while (seconds > 0 && !_isSeePLayer)
         {
-            _canAttack = false;
-            StartCoroutine(Cooldown());
+            seconds -= Time.fixedDeltaTime;
+            yield return new WaitForFixedUpdate();
         }
+        if (!_isSeePLayer)
+        {
+            Facing = Facing == Direction2.Right ? Direction2.Left : Direction2.Right;
+            StartCoroutine(Move());
+        }
+    }
+
+    private IEnumerator Rest()
+    {
+        _isMoving = false;
+        var seconds = RestTime;
+        while (seconds > 0 && !_isSeePLayer)
+        {
+            seconds -= Time.fixedDeltaTime;
+            yield return new WaitForFixedUpdate();
+        }
+        StartCoroutine(Move());
+    }
+
+    private IEnumerator CheckForPlayer()
+    {
+        if (!IsUnderGrowth)
+        {
+            _isSeePLayer = false;
+            while (!_isSeePLayer)
+            {
+                if (RaycastOffset(1) || RaycastOffset(0) || RaycastOffset(-1))
+                {
+                    _isSeePLayer = true;
+                    break;
+                }
+                yield return new WaitForFixedUpdate();
+            }
+            Attack();
+        }
+    }
+    private bool RaycastOffset(float offset)
+    {
+        var hit = Physics2D.Raycast(transform.position + Vector3.up * offset, Facing == Direction2.Right ? Vector3.right : Vector3.left, DetectRangee, PlayerLayer);
+        Debug.DrawRay(transform.position + Vector3.up * offset, (Facing == Direction2.Right ? Vector3.right : Vector3.left) * DetectRangee, Color.red, 0.02f);
+        return hit && hit.collider != null && !GameManager.Instance.Player.GetComponent<Health>().IsDead;
+    }
+
+
+    public void Death()
+    {
+        _isMoving = false;
+        _isSeePLayer = false;
+        IsUnderGrowth = true;
+        Animator.SetTrigger("Death");
+    }
+    public void FinishDeath()
+    {
+        Sprite.transform.parent = transform.parent;
+        Destroy(gameObject);
     }
 
     protected void Attack()
     {
-        if (attackCd <= 0)
-        {
-            attackCd = attackRate;
-            OnAttack();
-        }
+        Animator.SetTrigger("Shoot");
+        StartCoroutine(Cooldown());
     }
 
-    protected abstract void OnAttack();
-
-    private IEnumerator Cooldown()
+    protected IEnumerator Cooldown()
     {
-        yield return new WaitForSeconds(DamageCooldown);
-        _canAttack = true;
+        _isMoving = false;
+        yield return new WaitForSeconds(AttackCooldown);
+        StartCoroutine(CheckForPlayer());
+        StartCoroutine(Rest());
     }
 
     protected virtual void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        var leftMovePoint = transform.position + Vector3.left * (PatrolingDistance / 2);
-        var rightMovePoint = transform.position + Vector3.right * (PatrolingDistance / 2);
-        Gizmos.DrawLine(leftMovePoint, rightMovePoint);
+        Gizmos.DrawLine(PatrolingPointLeft.position, PatrolingPointRight.position);
     }
 }

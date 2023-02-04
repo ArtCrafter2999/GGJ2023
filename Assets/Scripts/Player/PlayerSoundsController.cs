@@ -38,7 +38,7 @@ public class PlayerSoundsController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bool moving = !Mathf.Approximately(Controller.MoveInput, 0f) && Controller.GroundCollider;
+        bool moving = !Mathf.Approximately(Controller.MoveInput, 0f) && Controller.IsOnGround;
         if (!wasMoving && moving)
         {
             StartWalkClip();

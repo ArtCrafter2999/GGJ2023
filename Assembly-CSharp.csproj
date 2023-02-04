@@ -59,7 +59,6 @@
     <Compile Include="Assets\Scripts\Enemies\Enemy.cs" />
     <Compile Include="Assets\Prefabs\Platform\DetectingMovePlatform.cs" />
     <Compile Include="Assets\UpgradesSystem\UpgradeBase.cs" />
-    <Compile Include="Assets\Scripts\Enemies\BiorobotEnemy.cs" />
     <Compile Include="Assets\Scripts\BaseMechanics\IBerserk.cs" />
     <Compile Include="Assets\InputSystem\PlayerControlls.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
@@ -79,6 +78,7 @@
     <Compile Include="Assets\Scripts\BaseMechanics\FakeImplementation\FakeMovement.cs" />
     <Compile Include="Assets\Scripts\BaseMechanics\FakeImplementation\FakeBerserk.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
+    <Compile Include="Assets\Scripts\Enemies\Projectile.cs" />
     <Compile Include="Assets\Prefabs\Platform\MovePlatform.cs" />
     <Compile Include="Assets\Prefabs\Press\Press.cs" />
     <Compile Include="Assets\UpgradesSystem\HarmUpgrade.cs" />
@@ -97,6 +97,7 @@
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\UpgradesSystem\UpgradesManagerUI.cs" />
     <Compile Include="Assets\Scripts\BaseMechanics\FakeImplementation\FakeGrowth.cs" />
+    <Compile Include="Assets\Scripts\Enemies\BioRobotAnimationEventsHandler.cs" />
     <Compile Include="Assets\BackGround\Paralax.cs" />
   </ItemGroup>
   <ItemGroup>
