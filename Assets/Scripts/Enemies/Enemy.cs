@@ -134,6 +134,7 @@ public class Enemy : MonoBehaviour
         _isSeePLayer = false;
         IsUnderGrowth = true;
         Animator.SetTrigger("Death");
+        rb.velocity = Vector3.zero;
     }
     public void FinishDeath()
     {

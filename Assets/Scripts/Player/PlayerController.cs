@@ -108,7 +108,10 @@ public class PlayerController : MonoBehaviour
     private void OnEnable()
     {
         if (GameManager.Instance != null)
+        {
             PlayerControlls.Player.Enable();
+        }    
+            
     }
     private void OnDisable()
     {

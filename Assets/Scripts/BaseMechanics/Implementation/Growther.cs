@@ -12,41 +12,16 @@ public class Growther : MonoBehaviour, IGrowth
 
     [field: SerializeField] public float GrowthTime { get; set; }
 
-    public bool IsGrowthing { get; private set; }
+    public bool IsGrowthing { get; set; }
 
     public event Action DidGrowth;
-
     public void GrowInTarget(Enemy enemy)
     {
         if (IsGrowthing) return;
 
         print("grow in : " + enemy.name);
         IsGrowthing = true;
-        enemy.IsUnderGrowth = true;
-        col.enabled = false;
-        rbody.isKinematic = true;
-        rbody.velocity = Vector2.zero;
-        rbody.DOJump(enemy.transform.position, 2, 1, 0.5f).OnComplete(() => StartCoroutine(DoGrow(enemy)));
-    }
-
-    IEnumerator DoGrow(Enemy enemy)
-    {
-        float time = GrowthTime;
-        
-        while (time > 0)
-        {
-            health.ChangeHealth(restoreHealth);
-
-            yield return new WaitForSeconds(1f);
-            time -= 1f;
-        }
-
-        DidGrowth?.Invoke();
-
         enemy.Death();
-        IsGrowthing = false;
-        enemy.IsUnderGrowth = false;
-        rbody.isKinematic = false;
-        col.enabled = true;
+        DidGrowth.Invoke();
     }
 }

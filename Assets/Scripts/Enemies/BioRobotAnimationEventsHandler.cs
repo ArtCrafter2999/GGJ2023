@@ -17,12 +17,18 @@ public class BioRobotAnimationEventsHandler : MonoBehaviour
     }
     public void SetPlayerInvisible()
     {
-        _player.SetActive(false);
+        GameManager.Instance.Player.GetComponent<Collider2D>().enabled = false;
+        GameManager.Instance.Player.GetComponentInChildren<SpriteRenderer>().enabled = false;
+        GameManager.Instance.Player.GetComponent<Rigidbody2D>().isKinematic = true;
+        GameManager.Instance.Player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 
     }
     public void SetPlayerVisible()
     {
-        _player.SetActive(true);
+        GameManager.Instance.Player.GetComponent<Collider2D>().enabled = true;
+        GameManager.Instance.Player.GetComponentInChildren<SpriteRenderer>().enabled = true;
+        GameManager.Instance.Player.GetComponent<Rigidbody2D>().isKinematic = false;
+        GameManager.Instance.Player.GetComponentInChildren<Growther>().IsGrowthing = false;
         bioRobot.FinishDeath();
         GameManager.Instance.PlayerController.health.ChangeHealth(999);
     }
