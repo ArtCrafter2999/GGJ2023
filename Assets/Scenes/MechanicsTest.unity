@@ -4482,7 +4482,7 @@ PrefabInstance:
     - target: {fileID: 6585644611471679255, guid: 25f242c87b44141458f5788a25f2fc6d, type: 3}
       propertyPath: dialogData
       value: 
-      objectReference: {fileID: 11400000, guid: 7d0e375cdf3481041bc25a76e2324122, type: 2}
+      objectReference: {fileID: 11400000, guid: f41c67d5f9d82144c88077617e82d7c4, type: 2}
     - target: {fileID: 6585644611471679255, guid: 25f242c87b44141458f5788a25f2fc6d, type: 3}
       propertyPath: dialogText
       value: "P -        I feel worse, why?\r\nT -     \tBecause you`re getting closer
@@ -5476,3 +5476,64 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 321e4ff01c1a21847bdd70bbbf73031b, type: 3}
+--- !u!1001 &7496800308990756119
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7496800308064789737, guid: 76eb7e84d32889d4898bc5f0f2817bfa, type: 3}
+      propertyPath: m_Name
+      value: StartDialogue
+      objectReference: {fileID: 0}
+    - target: {fileID: 7496800308064790293, guid: 76eb7e84d32889d4898bc5f0f2817bfa, type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7496800308064790293, guid: 76eb7e84d32889d4898bc5f0f2817bfa, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.5706193
+      objectReference: {fileID: 0}
+    - target: {fileID: 7496800308064790293, guid: 76eb7e84d32889d4898bc5f0f2817bfa, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.195599
+      objectReference: {fileID: 0}
+    - target: {fileID: 7496800308064790293, guid: 76eb7e84d32889d4898bc5f0f2817bfa, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.10949249
+      objectReference: {fileID: 0}
+    - target: {fileID: 7496800308064790293, guid: 76eb7e84d32889d4898bc5f0f2817bfa, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7496800308064790293, guid: 76eb7e84d32889d4898bc5f0f2817bfa, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7496800308064790293, guid: 76eb7e84d32889d4898bc5f0f2817bfa, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7496800308064790293, guid: 76eb7e84d32889d4898bc5f0f2817bfa, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7496800308064790293, guid: 76eb7e84d32889d4898bc5f0f2817bfa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7496800308064790293, guid: 76eb7e84d32889d4898bc5f0f2817bfa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7496800308064790293, guid: 76eb7e84d32889d4898bc5f0f2817bfa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7496800308064790295, guid: 76eb7e84d32889d4898bc5f0f2817bfa, type: 3}
+      propertyPath: dialogData
+      value: 
+      objectReference: {fileID: 11400000, guid: 2b7761c777899274b9ab32d3ac2d6347, type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 76eb7e84d32889d4898bc5f0f2817bfa, type: 3}
