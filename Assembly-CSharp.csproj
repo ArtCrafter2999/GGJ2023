@@ -98,7 +98,14 @@
     <Compile Include="Assets\UpgradesSystem\UpgradesManagerUI.cs" />
     <Compile Include="Assets\Scripts\BaseMechanics\FakeImplementation\FakeGrowth.cs" />
     <Compile Include="Assets\Scripts\Enemies\BioRobotAnimationEventsHandler.cs" />
-    <Compile Include="Assets\BackGround\Paralax.cs" />
+    <Compile Include="Assets\Graphic\BackGround\Paralax.cs" />
+    <Compile Include="Assets\Scripts\StartDialogue.cs" />
+    <Compile Include="Assets\Scripts\Dialogues\Dialogue.cs" />
+    <Compile Include="Assets\Scripts\Bubble.cs" />
+    <Compile Include="Assets\Scripts\Dialogues\Phrase.cs" />
+    <Compile Include="Assets\Scripts\Dialogues\PhraseData.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerDeathHandler.cs" />
+    <Compile Include="Assets\Scripts\Dialogues\DialogData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
