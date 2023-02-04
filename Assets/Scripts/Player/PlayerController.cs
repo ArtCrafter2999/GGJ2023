@@ -263,7 +263,9 @@ public class PlayerController : MonoBehaviour
                 
             }
             _coyoteTimeLeft = 0;
-            IsJumping = true;
+			
+			Jumped?.Invoke();
+			IsJumping = true;
         }
 		else if ((_jumpsCountLeft > 0 || _coyoteTimeLeft > 0) || (GroundCollider && !IsJumping) ) //checks if was last grounded within coyoteTime and that jump has been pressed within bufferTime
 		{
