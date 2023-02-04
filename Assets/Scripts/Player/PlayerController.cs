@@ -89,7 +89,7 @@ public class PlayerController : MonoBehaviour
 	private float lastFallSpeed;
 
     #region Enable / Disable
-    private void OnEnable()
+    public void OnEnable()
 	{
 		if (GameManager.Instance != null)
 			PlayerControlls.Player.Enable();
