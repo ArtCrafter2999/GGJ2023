@@ -8,7 +8,7 @@ public class Bubble : MonoBehaviour
     {
         if (collision.TryGetComponent<Player>(out var player))
         {
-            Checkpoint = transform.position;
+            Checkpoint = player.transform.position;
             player.GetComponentInChildren<SelfHarmer>().enabled = false;
         }
     }
