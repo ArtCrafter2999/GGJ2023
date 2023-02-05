@@ -111,6 +111,8 @@
     <Compile Include="Assets\Graphic\BackGround\Paralax.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemySoundsController.cs" />
     <Compile Include="Assets\Scripts\SoundData.cs" />
+    <Compile Include="Assets\Scripts\TriggerZone.cs" />
+    <Compile Include="Assets\Scripts\HoverSound.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
