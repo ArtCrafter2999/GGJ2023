@@ -127,6 +127,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue: {fileID: 6585644611471679255}
+  PlayerLayer:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!82 &3988029049903203891
 AudioSource:
   m_ObjectHideFlags: 0
