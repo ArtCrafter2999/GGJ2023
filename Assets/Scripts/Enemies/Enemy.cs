@@ -36,7 +36,7 @@ public class Enemy : MonoBehaviour
     protected Rigidbody2D rb;
     protected Vector3 _currentMovePoint;
     protected bool _isSeePLayer = false;
-    protected bool _isMoving;
+    public bool _isMoving;
     protected float _cooldown;
     protected PlayerController player;
 
@@ -138,6 +138,13 @@ public class Enemy : MonoBehaviour
     }
     public void FinishDeath()
     {
+        StartCoroutine(WaitForDeath());
+    }
+
+    IEnumerator WaitForDeath()
+    {
+        yield return new WaitForSeconds(1f);
+
         Sprite.transform.parent = transform.parent;
         Destroy(gameObject);
     }

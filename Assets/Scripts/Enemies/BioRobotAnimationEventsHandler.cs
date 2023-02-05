@@ -13,7 +13,7 @@ public class BioRobotAnimationEventsHandler : MonoBehaviour
             bioRobot.Facing == Direction2.Right? bioRobot.ShootPointRight.position : bioRobot.ShootPointLeft.position,
             Quaternion.identity,
             bioRobot.transform)
-            .GetComponent<Projectile>().Init(bioRobot.Facing);
+            .GetComponent<Projectile>().Init(bioRobot.gameObject, bioRobot.Facing);
     }
     public void SetPlayerInvisible()
     {

@@ -72,7 +72,6 @@ public class PlayerSoundsController : MonoBehaviour
         wasIdle = idle;
     }
 
-    //void PlayClip(AudioClip clip, float volume = 1) => source.PlayOneShot(clip, volume);
     void PlayClip(SoundData data) => source.PlayOneShot(data.Clip, data.Volume);
     void StartWalkClip()
     {
