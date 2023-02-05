@@ -26,11 +26,6 @@ public class StartDialogue : MonoBehaviour
         if (collision.TryGetComponent<Player>(out var player))
         {
             player.GetComponentInChildren<SelfHarmer>().enabled = true;
-
-            if (!visited)
-            {
-                dialogue.PlayDialog();
-            }
         }
     }
 }
