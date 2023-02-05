@@ -7,13 +7,25 @@ using UnityEngine.UIElements;
 
 public class MainMenuScript : MonoBehaviour
 {
+    public AudioClip start, exit;
+    public AudioSource source;
+
     public void NewGame()
     {
-        SceneManager.LoadScene(1);
+        StopAllCoroutines();
+        StartCoroutine(WaitForClip(start, () => SceneManager.LoadScene(1)));
     }
     public void Exit() 
     {
-        Application.Quit();
-        print("Exit");
+        StopAllCoroutines();
+        StartCoroutine(WaitForClip(exit, Application.Quit));
+    }
+
+    IEnumerator WaitForClip(AudioClip clip, Action a)
+    {
+        source.clip = clip;
+        source.Play();
+        yield return new WaitUntil(() => source.time >= clip.length);
+        a();
     }
 }
