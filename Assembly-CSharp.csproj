@@ -113,6 +113,8 @@
     <Compile Include="Assets\Scripts\BaseMechanics\FakeImplementation\FakeGrowth.cs" />
     <Compile Include="Assets\Scripts\Enemies\BioRobotAnimationEventsHandler.cs" />
     <Compile Include="Assets\Graphic\BackGround\Paralax.cs" />
+    <Compile Include="Assets\Scripts\EnemyHint.cs" />
+    <Compile Include="Assets\Scripts\TutorialPoint.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
