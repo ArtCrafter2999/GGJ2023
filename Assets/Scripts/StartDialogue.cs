@@ -5,9 +5,20 @@ public class StartDialogue : MonoBehaviour
 {
     public Dialogue dialogue;
 
-    private IEnumerator Start()
+    bool visited;
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        yield return new WaitForSeconds(1f);
-        dialogue.PlayDialog();
+        if (collision.TryGetComponent<Player>(out var player))
+        {
+            player.GetComponentInChildren<SelfHarmer>().enabled = false;
+
+            if (!visited)
+            {
+                dialogue.PlayDialog();
+            }
+
+            visited = true;
+        }
     }
 }
