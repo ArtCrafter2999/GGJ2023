@@ -20,6 +20,7 @@ public class VideoHandlerScript : MonoBehaviour
 
     private void ChangeScene()
     {
+        inputs.Disable();
         SceneManager.LoadScene(NumberOfNextScene);
     }
 }
