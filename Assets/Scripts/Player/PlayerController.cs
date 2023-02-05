@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour
             HashSet<Collider2D> colliders = new HashSet<Collider2D>(Physics2D.OverlapBoxAll(GroundCheckPoints[0].position, (Vector2.up + Vector2.right / 10) * CheckSize, 0, GroundLayer));
             for (int i = 1; i < GroundCheckPoints.Length; i++)
             {
-                colliders.AddRange(Physics2D.OverlapBoxAll(GroundCheckPoints[i].position, (Vector2.up + Vector2.right / 10) * CheckSize, 0, GroundLayer));
+                colliders.Add(Physics2D.OverlapBox(GroundCheckPoints[i].position, Vector2.up * CheckSize, 0, GroundLayer));
             }
             return colliders.ToList();
         }
@@ -126,6 +126,7 @@ public class PlayerController : MonoBehaviour
 
         MoveInput = PlayerControlls.Player.Move.ReadValue<float>();
         //print(MoveInput);
+        print("LC: " + LeftCollider  + " RC: " + RightCollider);
         if (!IsGrabbing) ChangeDirection();
         GrabCheck();
         GrabWork();
