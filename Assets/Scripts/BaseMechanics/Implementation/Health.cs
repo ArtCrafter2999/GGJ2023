@@ -19,6 +19,7 @@ public class Health : MonoBehaviour
     public void ChangeHealth(float value)
     {
         CurrentHealth = Mathf.Clamp(CurrentHealth + value, 0, MaxHealth);
+        print(" Lost: " + value + "    Current: " + CurrentHealth);
 
         if (!IsDead && CurrentHealth <= 0)
         {

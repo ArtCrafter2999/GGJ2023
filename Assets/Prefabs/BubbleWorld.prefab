@@ -236,5 +236,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   source: {fileID: 3988029049903203891}
-  phrases: []
-  fadeDuration: 0.3
+  dialogData: {fileID: 0}

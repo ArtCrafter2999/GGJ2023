@@ -21,4 +21,16 @@ public class StartDialogue : MonoBehaviour
             visited = true;
         }
     }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent<Player>(out var player))
+        {
+            player.GetComponentInChildren<SelfHarmer>().enabled = true;
+
+            if (!visited)
+            {
+                dialogue.PlayDialog();
+            }
+        }
+    }
 }

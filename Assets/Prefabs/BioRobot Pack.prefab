@@ -89,7 +89,7 @@ MonoBehaviour:
   PlayerLayer:
     serializedVersion: 2
     m_Bits: 8
-  AttackCooldown: 1
+  AttackCooldown: 3
   ProjectilePrefab: {fileID: 6839013644605494021, guid: ef0443b8e5b504544bf6ea1780cd59b2, type: 3}
   ShootPointLeft: {fileID: 489995729128107586}
   ShootPointRight: {fileID: 489995730833411693}

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 
@@ -133,21 +134,24 @@ public class Enemy : MonoBehaviour
         _isMoving = false;
         _isSeePLayer = false;
         IsUnderGrowth = true;
+        //GetComponent<Collider2D>().enabled = false;
+        rb.isKinematic = true;
         Animator.SetTrigger("Death");
-        rb.velocity = Vector3.zero;
     }
     public void FinishDeath()
     {
-        StartCoroutine(WaitForDeath());
-    }
-
-    IEnumerator WaitForDeath()
-    {
-        yield return new WaitForSeconds(1f);
-
         Sprite.transform.parent = transform.parent;
         Destroy(gameObject);
+    //    StartCoroutine(WaitForDeath());
     }
+
+    //IEnumerator WaitForDeath()
+    //{
+    //    yield return new WaitForSeconds(1f);
+
+    //    Sprite.transform.parent = transform.parent;
+    //    Destroy(gameObject);
+    //}
 
     protected void Attack()
     {

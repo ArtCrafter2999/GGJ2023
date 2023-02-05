@@ -25,7 +25,7 @@ public class Projectile : MonoBehaviour
     {
         if (IsDamage && collision.gameObject == GameManager.Instance.Player)
         {
-            //GameManager.Instance.Player.GetComponent<Health>().ChangeHealth(-999);
+            GameManager.Instance.Player.GetComponent<Health>().ChangeHealth(-999);
             sounds.PlayHit();
         }
         else

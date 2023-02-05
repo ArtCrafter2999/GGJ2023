@@ -3,13 +3,11 @@ using UnityEngine;
 
 public class PlayerDeathHandler : MonoBehaviour
 {
-    Vector3 initPosition;
-
     Vector3 spriteOffset;
 
     void Start()
     {
-        initPosition = transform.position;
+        Bubble.Checkpoint = GameManager.Instance.Player.transform.position;
         GetComponent<Health>().OnDeath += OnDead;
         var c = GetComponent<PlayerAnimationsController>();
         spriteOffset = c.Sprite.transform.localPosition;
@@ -23,8 +21,8 @@ public class PlayerDeathHandler : MonoBehaviour
     IEnumerator Respawn()
     {
         yield return new WaitForSeconds(2f);
-        
-        transform.position = Bubble.Checkpoint != Vector3.zero? Bubble.Checkpoint : initPosition;
+
+        transform.position = Bubble.Checkpoint;
 
         var c = GetComponent<PlayerAnimationsController>();
         c.Sprite.gameObject.transform.parent = transform;
