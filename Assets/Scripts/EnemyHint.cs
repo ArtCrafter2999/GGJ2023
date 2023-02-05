@@ -4,7 +4,6 @@ public class EnemyHint : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        print("col : " + collision.name);
         if (collision.TryGetComponent<Player>(out var player))
         {
             FindObjectOfType<UIController>().growInfo.SetActive(true);
