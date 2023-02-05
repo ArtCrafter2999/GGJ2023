@@ -1,7 +1,4 @@
-﻿using System;
-using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
+﻿using UnityEngine;
 
 public class Bubble : MonoBehaviour
 {
@@ -13,7 +10,7 @@ public class Bubble : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == PlayerLayer)
+        if (collision.TryGetComponent<Player>(out var player))
         {
             Checkpoint = GameManager.Instance.Player.transform.position;
             GameManager.Instance.Player.GetComponentInChildren<SelfHarmer>().enabled = false;
