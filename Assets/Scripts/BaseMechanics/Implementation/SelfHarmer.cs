@@ -9,23 +9,9 @@ public class SelfHarmer : MonoBehaviour, IHarm
 
     [field: SerializeField] public float LostHealth { get; set; }
 
-    void OnEnable()
+    private void Update()
     {
-        StartCoroutine(DoLostHealth());
-    }
-
-    void OnDisable()
-    {
-        StopAllCoroutines();
-    }
-
-    IEnumerator DoLostHealth()
-    {
-        while (!health.IsDead)
-        {
-            yield return new WaitWhile(() => growther.IsGrowthing);
-            yield return new WaitForSeconds(1f);
-            health.ChangeHealth(-LostHealth);
-        }
+        if (!growther.IsGrowthing) health.ChangeHealth(-LostHealth * Time.deltaTime);
+        print(!growther.IsGrowthing + " Lost: "+ LostHealth*Time.deltaTime + "    Current: " + health.CurrentHealth);
     }
 }
