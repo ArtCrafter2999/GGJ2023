@@ -10,17 +10,14 @@ public class PlayerSoundsController : MonoBehaviour
     public PlayerController Controller;
     public Health Health;
 
-    public AudioClip walk;
-    public AudioClip jump;
-    public AudioClip doubleJump;
-    public AudioClip drop;
-    public AudioClip idle;
-    public AudioClip death;
+    public SoundData walk;
+    public SoundData jump;
+    public SoundData doubleJump;
+    public SoundData drop;
+    public SoundData idle;
+    public SoundData death;
+    public SoundData stick;
 
-    [Range(0f, 1f)] public float jumpVolume;
-    [Range(0f, 1f)] public float dropVolume;
-    [Range(0f, 1f)] public float idleVolume;
-    
     public float moveSoundInterval;
     public float idleSoundInterval;
 
@@ -34,9 +31,10 @@ public class PlayerSoundsController : MonoBehaviour
     {
         idleTick = idleSoundInterval;
 
-        Controller.Jumped += () => PlayClip(jump, jumpVolume);
-        Controller.DoubleJumped += () => PlayClip(doubleJump, jumpVolume);
-        Controller.Dropped += () => PlayClip(drop, dropVolume);
+        Controller.Jumped += () => PlayClip(jump);
+        Controller.DoubleJumped += () => PlayClip(doubleJump);
+        Controller.Dropped += () => PlayClip(drop);
+        Controller.Grabbed += () => PlayClip(stick);
         Health.OnDeath += () => PlayClip(death);
     }
 
@@ -74,7 +72,8 @@ public class PlayerSoundsController : MonoBehaviour
         wasIdle = idle;
     }
 
-    void PlayClip(AudioClip clip, float volume = 1) => source.PlayOneShot(clip, volume);
+    //void PlayClip(AudioClip clip, float volume = 1) => source.PlayOneShot(clip, volume);
+    void PlayClip(SoundData data) => source.PlayOneShot(data.Clip, data.Volume);
     void StartWalkClip()
     {
         walkSource.DOFade(1, walkFadeDuration).From(0);
@@ -87,11 +86,11 @@ public class PlayerSoundsController : MonoBehaviour
 
     void StartIdleClip()
     {
-        idleSource.DOFade(idleVolume, walkFadeDuration).From(0);
+        idleSource.DOFade(idle.Volume, walkFadeDuration).From(0);
         idleSource.Play();
     }
     void StopIdleClip()
     {
-        idleSource.DOFade(0, walkFadeDuration).From(idleVolume).OnComplete(idleSource.Stop);
+        idleSource.DOFade(0, walkFadeDuration).From(idle.Volume).OnComplete(idleSource.Stop);
     }
 }

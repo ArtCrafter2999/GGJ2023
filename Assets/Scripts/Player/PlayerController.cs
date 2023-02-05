@@ -101,8 +101,10 @@ public class PlayerController : MonoBehaviour
     public event Action Dropped;
     public event Action Jumped;
     public event Action DoubleJumped;
+    public event Action Grabbed;
 
     private float lastFallSpeed;
+    bool wasGrabbing;
 
     #region Enable / Disable
     public void OnEnable()
@@ -180,6 +182,13 @@ public class PlayerController : MonoBehaviour
         {
             IsGrabbing = false;
         }
+
+        if (!wasGrabbing && IsGrabbing)
+        {
+            Grabbed?.Invoke();
+        }
+
+        wasGrabbing = IsGrabbing;
     }
 
     private void GrabWork()
