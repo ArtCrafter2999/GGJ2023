@@ -82,10 +82,10 @@ public class PlayerController : MonoBehaviour
     {
         get
         {
-            HashSet<Collider2D> colliders = new HashSet<Collider2D>(Physics2D.OverlapBoxAll(GroundCheckPoints[0].position, (Vector2.up + Vector2.right / 10) * CheckSize, 0, GroundLayer));
-            for (int i = 1; i < GroundCheckPoints.Length; i++)
+            HashSet<Collider2D> colliders = new HashSet<Collider2D>();
+            for (int i = 0; i < GroundCheckPoints.Length; i++)
             {
-                colliders.Add(Physics2D.OverlapBox(GroundCheckPoints[i].position, Vector2.up * CheckSize, 0, GroundLayer));
+                colliders.AddRange(Physics2D.OverlapBoxAll(GroundCheckPoints[i].position, CheckSize, 0, GroundLayer));
             }
             return colliders.ToList();
         }
@@ -93,9 +93,9 @@ public class PlayerController : MonoBehaviour
     public bool IsOnGround => GroundColliders.Count > 0;
 
 
-    public Collider2D RightCollider => Physics2D.OverlapBox(RightCheckPoint.position, (Vector2.right + Vector2.up / 10) * CheckSize, 0, WallsLayer);
-    public Collider2D LeftCollider => Physics2D.OverlapBox(LeftCheckPoint.position, (Vector2.right + Vector2.up / 10) * CheckSize, 0, WallsLayer);
-    public Collider2D CeilingCollider => Physics2D.OverlapBox(CeilingCheckPoint.position, (Vector2.up + Vector2.right / 10) * CheckSize, 0, WallsLayer);
+    public Collider2D RightCollider => Physics2D.OverlapBox(RightCheckPoint.position, CheckSize, 0, WallsLayer);
+    public Collider2D LeftCollider => Physics2D.OverlapBox(LeftCheckPoint.position, CheckSize, 0, WallsLayer);
+    public Collider2D CeilingCollider => Physics2D.OverlapBox(CeilingCheckPoint.position, CheckSize, 0, WallsLayer);
     public PlayerControlls PlayerControlls => GameManager.Instance.Controlls;
 
     public event Action Dropped;
@@ -126,7 +126,7 @@ public class PlayerController : MonoBehaviour
 
         MoveInput = PlayerControlls.Player.Move.ReadValue<float>();
         //print(MoveInput);
-        print("LC: " + LeftCollider  + " RC: " + RightCollider);
+        print("LC: " + LeftCollider  + " RC: " + RightCollider + " IsOnGround: " +  IsOnGround);
         if (!IsGrabbing) ChangeDirection();
         GrabCheck();
         GrabWork();
@@ -165,7 +165,7 @@ public class PlayerController : MonoBehaviour
         {
             IsGrabbing = true;
         }
-        if (!(RightCollider || LeftCollider) || IsOnGround)
+        else if (!RightCollider && !LeftCollider|| IsOnGround)
         {
             IsGrabbing = false;
         }
@@ -328,4 +328,15 @@ public class PlayerController : MonoBehaviour
         platform.rotationalOffset = 0;
     }
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color. red;
+        Gizmos.DrawCube(RightCheckPoint.position, CheckSize);
+        Gizmos.DrawCube(LeftCheckPoint.position, CheckSize);
+        Gizmos.DrawCube(CeilingCheckPoint.position, CheckSize);
+        foreach (var point in GroundCheckPoints)
+        {
+            Gizmos.DrawCube(point.position, CheckSize);
+        }
+    }
 }
