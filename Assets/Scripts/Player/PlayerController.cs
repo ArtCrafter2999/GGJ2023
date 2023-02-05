@@ -126,7 +126,6 @@ public class PlayerController : MonoBehaviour
 
         MoveInput = PlayerControlls.Player.Move.ReadValue<float>();
         //print(MoveInput);
-        print("LC: " + LeftCollider  + " RC: " + RightCollider + " IsOnGround: " +  IsOnGround);
         if (!IsGrabbing) ChangeDirection();
         GrabCheck();
         GrabWork();
