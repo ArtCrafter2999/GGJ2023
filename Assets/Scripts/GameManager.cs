@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
         Controlls.UI.Pause.performed += (ctx) => Pause();
         Controlls.UI.Enable();
 
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
     private void Pause()
     {

@@ -59,6 +59,7 @@
     <Compile Include="Assets\Scripts\Enemies\Enemy.cs" />
     <Compile Include="Assets\Prefabs\Platform\DetectingMovePlatform.cs" />
     <Compile Include="Assets\UpgradesSystem\UpgradeBase.cs" />
+    <Compile Include="Assets\Scripts\HoverSound.cs" />
     <Compile Include="Assets\Scripts\BaseMechanics\IBerserk.cs" />
     <Compile Include="Assets\Scripts\Dialogues\DialogData.cs" />
     <Compile Include="Assets\InputSystem\PlayerControlls.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Assets\UpgradesSystem\BerserkUpgrade.cs" />
     <Compile Include="Assets\Scripts\StartDialogue.cs" />
     <Compile Include="Assets\Scripts\BaseMechanics\IMovement.cs" />
+    <Compile Include="Assets\Scripts\SoundData.cs" />
     <Compile Include="Assets\Scripts\Dialogues\Phrase.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerSpawner.cs" />
     <Compile Include="Assets\Prefabs\Platform\DetectingRotatePlatform.cs" />
@@ -85,9 +87,11 @@
     <Compile Include="Assets\Scripts\Dialogues\Dialogue.cs" />
     <Compile Include="Assets\Scripts\Dialogues\PhraseData.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
+    <Compile Include="Assets\Scripts\Enemies\EnemySoundsController.cs" />
     <Compile Include="Assets\Scripts\Enemies\Projectile.cs" />
     <Compile Include="Assets\Scripts\Player\HpBar.cs" />
     <Compile Include="Assets\Scripts\Bubble.cs" />
+    <Compile Include="Assets\Scripts\TriggerZone.cs" />
     <Compile Include="Assets\Prefabs\Platform\MovePlatform.cs" />
     <Compile Include="Assets\Prefabs\Press\Press.cs" />
     <Compile Include="Assets\UpgradesSystem\HarmUpgrade.cs" />
@@ -109,10 +113,6 @@
     <Compile Include="Assets\Scripts\BaseMechanics\FakeImplementation\FakeGrowth.cs" />
     <Compile Include="Assets\Scripts\Enemies\BioRobotAnimationEventsHandler.cs" />
     <Compile Include="Assets\Graphic\BackGround\Paralax.cs" />
-    <Compile Include="Assets\Scripts\Enemies\EnemySoundsController.cs" />
-    <Compile Include="Assets\Scripts\SoundData.cs" />
-    <Compile Include="Assets\Scripts\TriggerZone.cs" />
-    <Compile Include="Assets\Scripts\HoverSound.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
