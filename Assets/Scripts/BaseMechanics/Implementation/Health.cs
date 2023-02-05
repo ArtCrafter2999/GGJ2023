@@ -25,5 +25,9 @@ public class Health : MonoBehaviour
             IsDead = true;
             OnDeath?.Invoke();
         }
+        else if (CurrentHealth > 0)
+        {
+            IsDead = false;
+        }
     }
 }

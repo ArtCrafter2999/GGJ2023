@@ -22,6 +22,10 @@ public class Growther : MonoBehaviour, IGrowth
         print("grow in : " + enemy.name);
         IsGrowthing = true;
         enemy.Death();
+        enemy.Facing = GameManager.Instance.PlayerController
+            .LookingDirection == Direction2.Right ?
+            Direction2.Left :
+            Direction2.Right;
         DidGrowth.Invoke();
     }
 }

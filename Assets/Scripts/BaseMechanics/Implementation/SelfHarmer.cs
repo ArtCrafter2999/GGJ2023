@@ -12,6 +12,6 @@ public class SelfHarmer : MonoBehaviour, IHarm
     private void Update()
     {
         if (!growther.IsGrowthing) health.ChangeHealth(-LostHealth * Time.deltaTime);
-        print(!growther.IsGrowthing + " Lost: "+ LostHealth*Time.deltaTime + "    Current: " + health.CurrentHealth);
+        //print(!growther.IsGrowthing + " Lost: "+ LostHealth*Time.deltaTime + "    Current: " + health.CurrentHealth);
     }
 }

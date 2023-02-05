@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Intro Clip.unity
     guid: 0886de1c43759d44ab3d0710f4fc2763
   - enabled: 1
+    path: Assets/Scenes/mapfin.unity
+    guid: 0870dab5a1854c749a549296e140dc7a
+  - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects: {}

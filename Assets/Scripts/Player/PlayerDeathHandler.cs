@@ -30,7 +30,6 @@ public class PlayerDeathHandler : MonoBehaviour
         c.Sprite.gameObject.transform.parent = transform;
         c.Sprite.transform.localPosition = spriteOffset;
         GetComponent<Health>().ChangeHealth(GetComponent<Health>().MaxHealth);
-        GetComponent<PlayerController>().OnEnable();
         GetComponent<Player>().enabled = true;
 
         c.Animator.enabled = false;

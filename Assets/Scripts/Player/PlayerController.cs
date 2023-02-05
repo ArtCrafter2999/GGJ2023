@@ -104,20 +104,6 @@ public class PlayerController : MonoBehaviour
 
     private float lastFallSpeed;
 
-    #region Enable / Disable
-    public void OnEnable()
-    {
-        if (GameManager.Instance != null)
-        {
-            PlayerControlls.Player.Enable();
-        }    
-            
-    }
-    private void OnDisable()
-    {
-        PlayerControlls.Player.Disable();
-    }
-    #endregion
 
     private void Start()
     {
@@ -128,7 +114,6 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         health = GetComponentInChildren<Health>();
         growther = GetComponentInChildren<Growther>();
-        health.OnDeath += OnDisable;
 
         _gravityScale = rb.gravityScale;
     }
@@ -138,6 +123,7 @@ public class PlayerController : MonoBehaviour
         if (health.IsDead || growther.IsGrowthing) return;
 
         MoveInput = PlayerControlls.Player.Move.ReadValue<float>();
+        //print(MoveInput);
         if (!IsGrabbing) ChangeDirection();
         GrabCheck();
         GrabWork();
