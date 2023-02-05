@@ -1390,15 +1390,41 @@ MonoBehaviour:
   idleSource: {fileID: 3616206034874412436}
   Controller: {fileID: 2692484668256730889}
   Health: {fileID: 7767337839564838709}
-  walk: {fileID: 8300000, guid: 72b15cbb28a73f54ca14c0990a2fb65e, type: 3}
-  jump: {fileID: 8300000, guid: 162469340939d1949856b89f187f54ff, type: 3}
-  doubleJump: {fileID: 8300000, guid: 81e1cf8aa31016941a2c9ad03cd89d62, type: 3}
-  drop: {fileID: 8300000, guid: 19036eeb157b34c40bfb540aed85b0a8, type: 3}
-  idle: {fileID: 8300000, guid: a4a0f728c0872fd41a364620410435a8, type: 3}
-  death: {fileID: 8300000, guid: 8e186181ab36f504c9da80d6e23d3e67, type: 3}
-  jumpVolume: 0.243
-  dropVolume: 0.381
-  idleVolume: 0.344
+  walk:
+    clips:
+    - {fileID: 8300000, guid: 72b15cbb28a73f54ca14c0990a2fb65e, type: 3}
+    volumeRange: {x: 1, y: 1}
+  jump:
+    clips:
+    - {fileID: 8300000, guid: 162469340939d1949856b89f187f54ff, type: 3}
+    volumeRange: {x: 0.22, y: 0.28}
+  doubleJump:
+    clips:
+    - {fileID: 8300000, guid: 81e1cf8aa31016941a2c9ad03cd89d62, type: 3}
+    volumeRange: {x: 0.22, y: 0.28}
+  drop:
+    clips:
+    - {fileID: 8300000, guid: 5be0e64a46eea93498415386f13c3163, type: 3}
+    - {fileID: 8300000, guid: 55740b2ba58fefa4ea51f332734cb671, type: 3}
+    - {fileID: 8300000, guid: edd869ef5960fa6429b55ed357d0a139, type: 3}
+    - {fileID: 8300000, guid: 2ba9ce071b591114a8524d3c65dd062b, type: 3}
+    - {fileID: 8300000, guid: eb312413f4edefd4390a91039f31be8e, type: 3}
+    - {fileID: 8300000, guid: 19036eeb157b34c40bfb540aed85b0a8, type: 3}
+    volumeRange: {x: 0.35, y: 0.4}
+  idle:
+    clips:
+    - {fileID: 8300000, guid: a4a0f728c0872fd41a364620410435a8, type: 3}
+    volumeRange: {x: 0.344, y: 0.344}
+  death:
+    clips:
+    - {fileID: 8300000, guid: 8e186181ab36f504c9da80d6e23d3e67, type: 3}
+    volumeRange: {x: 1, y: 1}
+  stick:
+    clips:
+    - {fileID: 8300000, guid: 4a40bd167b0fa8b44843b705e5279acd, type: 3}
+    - {fileID: 8300000, guid: 02e85ee9cee08df4ab5cce7fe5780b15, type: 3}
+    - {fileID: 8300000, guid: 98a271235a34cee40953ad9b8e29b067, type: 3}
+    volumeRange: {x: 0.8, y: 1}
   moveSoundInterval: 1.5
   idleSoundInterval: 10
   walkFadeDuration: 0.3

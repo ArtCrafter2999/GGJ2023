@@ -14,6 +14,9 @@ public class Projectile : MonoBehaviour
 
     private bool _isInited = false;
     private bool _isDestroyed = false;
+
+    EnemySoundsController sounds;
+
     private void Update()
     {
         if (_isInited && !_isDestroyed) transform.position += (Direction == Direction2.Right ? Vector3.right : Vector3.left)* (Speed * Time.deltaTime);
@@ -22,7 +25,8 @@ public class Projectile : MonoBehaviour
     {
         if (IsDamage && collision.gameObject == GameManager.Instance.Player)
         {
-            GameManager.Instance.Player.GetComponent<Health>().ChangeHealth(-999);
+            //GameManager.Instance.Player.GetComponent<Health>().ChangeHealth(-999);
+            sounds.PlayHit();
         }
         else
         {
@@ -34,13 +38,17 @@ public class Projectile : MonoBehaviour
     }
     public void DestroyEnd()
     {
+        sounds.PlayHit();
         Destroy(gameObject);
     }
 
-    public void Init(Direction2 direction)
+    public void Init(GameObject enemySource, Direction2 direction)
     {
+        this.sounds = enemySource.GetComponentInChildren<EnemySoundsController>();
         Direction = direction;
         _isInited = true;
+
+        sounds.PlayShot();
     }
 }
 
