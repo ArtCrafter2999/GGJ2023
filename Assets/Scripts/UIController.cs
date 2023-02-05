@@ -14,6 +14,7 @@ public class UIController : MonoBehaviour
     public GameObject dialogPanel;
     public TMP_Text dialogText;
     public GameObject harmInfo;
+    public GameObject growInfo;
 
     void Start()
     {
