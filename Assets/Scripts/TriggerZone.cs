@@ -8,6 +8,6 @@ public class TriggerZone : MonoBehaviour
     public int NumberOfScene;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject == GameManager.Instance.Player) SceneManager.LoadScene(1);
+        if(collision.gameObject == GameManager.Instance.Player) SceneManager.LoadScene(NumberOfScene);
     }
 }
