@@ -22,6 +22,7 @@ public class Enemy : MonoBehaviour
     [Header("View")]
     public SpriteRenderer Sprite;
     public Animator Animator;
+    public Transform PlayerRespawnPoint;
     public bool IsUnderGrowth { get; set; }
     private Direction2 _facing;
     public Direction2 Facing
@@ -38,14 +39,12 @@ public class Enemy : MonoBehaviour
     protected bool _isSeePLayer = false;
     public bool _isMoving;
     protected float _cooldown;
-    protected PlayerController player;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
 
         Facing = Random.Range(0, 2) == 1 ? Direction2.Right : Direction2.Left;
-        player = GameManager.Instance.PlayerController;
         StartCoroutine(Move());
         StartCoroutine(CheckForPlayer());
     }
@@ -135,11 +134,13 @@ public class Enemy : MonoBehaviour
         IsUnderGrowth = true;
         //GetComponent<Collider2D>().enabled = false;
         rb.isKinematic = true;
+        Sprite.transform.parent = transform.parent;
+        GameManager.Instance.Player.transform.position = PlayerRespawnPoint.position;
+        Bubble.Checkpoint = PlayerRespawnPoint.position;
         Animator.SetTrigger("Death");
     }
     public void FinishDeath()
     {
-        Sprite.transform.parent = transform.parent;
         Destroy(gameObject);
     //    StartCoroutine(WaitForDeath());
     }

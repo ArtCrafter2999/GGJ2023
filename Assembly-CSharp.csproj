@@ -82,12 +82,14 @@
     <Compile Include="Assets\UpgradesSystem\GrowthUpgrade.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerAnimationsController.cs" />
     <Compile Include="Assets\Scripts\BaseMechanics\FakeImplementation\FakeMovement.cs" />
+    <Compile Include="Assets\Scripts\EnemyHint.cs" />
     <Compile Include="Assets\Scripts\BaseMechanics\FakeImplementation\FakeBerserk.cs" />
     <Compile Include="Assets\Scripts\VideoHandlerScript.cs" />
     <Compile Include="Assets\Scripts\Dialogues\Dialogue.cs" />
     <Compile Include="Assets\Scripts\Dialogues\PhraseData.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemySoundsController.cs" />
+    <Compile Include="Assets\Scripts\TutorialPoint.cs" />
     <Compile Include="Assets\Scripts\Enemies\Projectile.cs" />
     <Compile Include="Assets\Scripts\Player\HpBar.cs" />
     <Compile Include="Assets\Scripts\Bubble.cs" />
@@ -113,8 +115,6 @@
     <Compile Include="Assets\Scripts\BaseMechanics\FakeImplementation\FakeGrowth.cs" />
     <Compile Include="Assets\Scripts\Enemies\BioRobotAnimationEventsHandler.cs" />
     <Compile Include="Assets\Graphic\BackGround\Paralax.cs" />
-    <Compile Include="Assets\Scripts\EnemyHint.cs" />
-    <Compile Include="Assets\Scripts\TutorialPoint.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
