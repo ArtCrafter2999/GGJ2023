@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,17 +22,20 @@ public class GameManager : MonoBehaviour
 
         //DontDestroyOnLoad(gameObject);
     }
+
+    public event Action OnGameTick;
+    private void Update()
+    {
+        OnGameTick?.Invoke();
+    }
     private void Pause()
     {
         Time.timeScale = IsPause ? 1 : 0;
         IsPause = !IsPause;
     }
-    private Scene _currentScene;
     public void ChangeScene(int scene)
     {
-        _currentScene = SceneManager.GetActiveScene();
-        SceneManager.LoadSceneAsync(scene, LoadSceneMode.Single); Debug.Log("Scene load start");
-        //SceneManager.sceneLoaded += SceneLoaded;
+        SceneManager.LoadScene(scene);
     }
     //private void SceneLoaded(Scene scene, LoadSceneMode mode)
     //{

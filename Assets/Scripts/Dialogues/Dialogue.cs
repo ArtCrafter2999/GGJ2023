@@ -8,7 +8,7 @@ public class Dialogue : MonoBehaviour
     public DialogData dialogData;
 
     bool isPlaying;
-    int currentPhraseIdx;
+    int currentPhraseIdx = 0;
     Phrase phrase;
 
     PhraseData CurrentPhraseData => dialogData.phrases[currentPhraseIdx];
@@ -17,40 +17,55 @@ public class Dialogue : MonoBehaviour
     {
         phrase = new Phrase(source);
     }
+    private void Start()
+    {
+        GameManager.Instance.Controlls.UI.SkipDialog.performed += c => Skip();
+        GameManager.Instance.Controlls.UI.Pause.performed += c => Pause();
+    }
 
     private void Update()
     {
-        if (isPlaying)
-        {
-            if (Input.GetKeyDown(KeyCode.Space) || phrase.IsEnded)
-            {
-                phrase.Stop();
+        if (isPlaying && phrase.IsEnded) Skip();
+    }
 
-                currentPhraseIdx++;
-                if (currentPhraseIdx < dialogData.phrases.Length)
-                {
-                    phrase.Play(CurrentPhraseData);
-                }
-                else
-                {
-                    StopDialog();
-                }
+    private void Pause()
+    {
+        if (phrase.IsPaused) phrase.Resume();
+        else phrase.Pause();
+    }    
+
+    private void Skip()
+    {
+        if(isPlaying)
+        {
+            phrase.Stop();
+
+            currentPhraseIdx++;
+            if (currentPhraseIdx < dialogData.phrases.Length)
+            {
+                phrase.Play(CurrentPhraseData);
+            }
+            else
+            {
+                StopDialog();
             }
         }
     }
 
     public void PlayDialog()
     {
-        if (isPlaying) return;
+        if (!isPlaying)
+        {
+            isPlaying = true;
 
-        isPlaying = true;
+            phrase.Play(CurrentPhraseData);
 
-        phrase.Play(CurrentPhraseData);
-
-        GameManager.Instance.PlayerComponent.enabled = false;
-        GameManager.Instance.PlayerController.enabled = false;
-        GameManager.Instance.Player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        GameManager.Instance.PlayerController.MoveInput = 0;
+            GameManager.Instance.PlayerComponent.enabled = false;
+            GameManager.Instance.PlayerController.enabled = false;
+            GameManager.Instance.Controlls.Player.Disable();
+            GameManager.Instance.Player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
+            GameManager.Instance.PlayerController.MoveInput = 0;
+        }
     }
 
     void StopDialog()
@@ -59,5 +74,7 @@ public class Dialogue : MonoBehaviour
         isPlaying = false;
         GameManager.Instance.PlayerComponent.enabled = true;
         GameManager.Instance.PlayerController.enabled = true;
+        GameManager.Instance.Player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+        GameManager.Instance.Controlls.Player.Enable();
     }
 }

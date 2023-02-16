@@ -15,6 +15,7 @@ public class PlayerAnimationsController : MonoBehaviour
         Health.OnDeath += () =>
         {
             Sprite.gameObject.transform.parent = Sprite.gameObject.transform.parent.transform.parent;
+            Animator.SetBool("IsGrabbing", false);
             Animator.SetTrigger("Death");
         };
     }
@@ -23,7 +24,7 @@ public class PlayerAnimationsController : MonoBehaviour
     void Update()
     {
         Sprite.flipX = Controller.LookingDirection == Direction2.Left;
-        Animator.SetFloat("MovingSpeed", Mathf.Abs(Controller.MoveInput));
+        Animator.SetBool("IsMoving", Controller.IsMoving);
         Animator.SetBool("IsJumping", Controller.IsJumping);
         Animator.SetBool("IsGrounded", Controller.IsOnGround);
         Animator.SetBool("IsGrabbing", Controller.IsGrabbing);

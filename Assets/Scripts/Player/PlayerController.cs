@@ -34,11 +34,12 @@ public class PlayerController : MonoBehaviour
             else
             {
                 _moveInput = _disableMovement == Direction2.Left ?
-                    MathF.Max(0, value) :
+                    Mathf.Max(0, value) :
                     Mathf.Min(0, value);
             }
         }
     }
+    public bool IsMoving => Mathf.Abs(MoveInput) > 0.01f;
     private Direction2? _disableMovement = null;
     [Space(10)]
     public float FrictionAmount;
@@ -71,7 +72,7 @@ public class PlayerController : MonoBehaviour
     [Space(10)]
     public LayerMask GroundLayer;
     public LayerMask WallsLayer;
-    public Direction2 LookingDirection { get; private set; } = Direction2.Right;
+    public Direction2 LookingDirection { get; private set; } = Direction2.Left;
     [SerializeField]
     private bool _isGrabbing = false;
     public bool IsGrabbing { get => _isGrabbing; private set { if (!_isGrabbing && value) StartCoroutine(LateSlide()); _isGrabbing = value; } }
@@ -117,6 +118,8 @@ public class PlayerController : MonoBehaviour
         health = GetComponentInChildren<Health>();
         growther = GetComponentInChildren<Growther>();
 
+        health.OnDeath += () => { IsSliding = false; IsGrabbing = false; };
+
         _gravityScale = rb.gravityScale;
     }
 
@@ -159,12 +162,13 @@ public class PlayerController : MonoBehaviour
     #region Grab/Slide
     private void GrabCheck()
     {
-        if ((MoveInput > 0 && RightCollider) ||
-            (MoveInput < 0 && LeftCollider))
+        if (!IsOnGround && (
+            (MoveInput > 0 && RightCollider ) ||
+            (MoveInput < 0 && LeftCollider)))
         {
             IsGrabbing = true;
         }
-        else if (!RightCollider && !LeftCollider|| IsOnGround)
+        else if ((!RightCollider && !LeftCollider) || IsOnGround)
         {
             IsGrabbing = false;
         }
@@ -280,7 +284,7 @@ public class PlayerController : MonoBehaviour
 			Jumped?.Invoke();
 			IsJumping = true;
         }
-        else if ((_jumpsCountLeft > 0 || _coyoteTimeLeft > 0) || (IsOnGround && !IsJumping)) //checks if was last grounded within coyoteTime and that jump has been pressed within bufferTime
+        else if (_jumpsCountLeft > 0 || _coyoteTimeLeft > 0 || (IsOnGround && !IsJumping)) //checks if was last grounded within coyoteTime and that jump has been pressed within bufferTime
         {
             _coyoteTimeLeft = 0;
             rb.velocity = new Vector2(rb.velocity.x, 0);

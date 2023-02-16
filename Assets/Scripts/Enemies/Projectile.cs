@@ -30,7 +30,10 @@ public class Projectile : MonoBehaviour
     private bool _isInited = false;
     private bool _isDestroyed = false;
 
-    EnemySoundsController sounds;
+    public AudioSource source;
+
+    public SoundData PlayerHitClip;
+    public SoundData WallHitClip;
 
     private void Update()
     {
@@ -41,7 +44,7 @@ public class Projectile : MonoBehaviour
         if (IsDamage && collision.gameObject == GameManager.Instance.Player)
         {
             GameManager.Instance.Player.GetComponent<Health>().ChangeHealth(-999);
-            sounds.PlayHit();
+            PlayClip(PlayerHitClip);
         }
         //else
         //{
@@ -66,13 +69,14 @@ public class Projectile : MonoBehaviour
     }
     public void DestroyEnd()
     {
-        sounds.PlayHit();
+        PlayClip(WallHitClip);
         Destroy(gameObject);
     }
+    void PlayClip(SoundData data) => source.PlayOneShot(data.Clip, data.Volume);
 
     public void Init(GameObject enemySource, Direction2 direction)
     {
-        this.sounds = enemySource.GetComponentInChildren<EnemySoundsController>();
+        var sounds = enemySource.GetComponentInChildren<EnemySoundsController>();
         Direction = direction;
         _isInited = true;
         sounds.PlayShot();

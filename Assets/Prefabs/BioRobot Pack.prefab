@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 489995729128107586}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: ShootPointLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 489995729188015706}
   - component: {fileID: 489995729188015705}
   - component: {fileID: 489995729188015704}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Biorobot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65,8 +65,6 @@ Transform:
   - {fileID: 489995730598632547}
   - {fileID: 489995729128107586}
   - {fileID: 489995730833411693}
-  - {fileID: 5583065315106550140}
-  - {fileID: 6981767087288529610}
   m_Father: {fileID: 4820512173946843234}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -82,6 +80,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e29c51df21a62546977fe2dee5ca5b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NoAI: 0
   MoveSpeed: 3
   RestTime: 3
   PatrolingPointRight: {fileID: 489995729366222800}
@@ -123,7 +122,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 1.3, y: 3}
-  m_EdgeRadius: 0.05
+  m_EdgeRadius: 0
 --- !u!50 &489995729188015704
 Rigidbody2D:
   serializedVersion: 4
@@ -154,7 +153,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 489995729366222800}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PatrolPointRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,7 +184,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 489995729435457500}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PatrolPointLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219,7 +218,7 @@ GameObject:
   - component: {fileID: 489995730598632558}
   - component: {fileID: 489995730598632545}
   - component: {fileID: 489995730598632544}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -239,6 +238,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8164992115371040887}
+  - {fileID: 5583065315106550140}
   m_Father: {fileID: 489995729188015707}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -285,7 +285,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 551470595, guid: 43e82618b989ef7428fea2d4b14f7036, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 5.25, y: 5.25}
@@ -336,7 +336,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 489995730833411693}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: ShootPointRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -370,7 +370,7 @@ GameObject:
   - component: {fileID: 3587476371723457565}
   - component: {fileID: 3243615111180814095}
   - component: {fileID: 4115245843267471626}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Audio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -384,13 +384,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1003063715541636047}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 489995729188015707}
-  m_RootOrder: 3
+  m_Father: {fileID: 489995730598632547}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3587476371723457565
 MonoBehaviour:
@@ -410,25 +410,17 @@ MonoBehaviour:
     clips:
     - {fileID: 8300000, guid: de5300da541baaa4c8683fd2eaa874b4, type: 3}
     - {fileID: 8300000, guid: 925c29fbe8bc5f24dbbd9d9694d69d19, type: 3}
-    volumeRange: {x: 0.7, y: 0.85}
+    volumeRange: {x: 0.4, y: 0.5}
   growth:
     clips:
     - {fileID: 8300000, guid: 35cc2fce5d6750d479d17dec8a00379b, type: 3}
-    volumeRange: {x: 0.3, y: 0.4}
-  hit:
-    clips:
-    - {fileID: 8300000, guid: 3a0046cf1134a8941977a947f3168603, type: 3}
-    - {fileID: 8300000, guid: a56c985cb38a1a4439244f9611c8055c, type: 3}
-    volumeRange: {x: 0.7, y: 0.85}
+    volumeRange: {x: 0.5, y: 0.6}
   walk:
     clips:
-    - {fileID: 8300000, guid: 049d9f10752ec7d4cb132631a25832f8, type: 3}
-    - {fileID: 8300000, guid: 57bc7cd4d4605e64ea1640b9cc8b94b6, type: 3}
-    - {fileID: 8300000, guid: 3a4428e22fe8f14468b3dd6596e43545, type: 3}
     - {fileID: 8300000, guid: 3b2e255d96eb0de439a406df811dd0f5, type: 3}
     - {fileID: 8300000, guid: d4357a2a7a3d3d24e8bd2959124fc617, type: 3}
     - {fileID: 8300000, guid: d25cc4ca77d5f7047b14a5aa2d9f6d77, type: 3}
-    volumeRange: {x: 0.4, y: 0.5}
+    volumeRange: {x: 0.5, y: 0.6}
   moveSoundInterval: 1
   walkFadeDuration: 0.3
 --- !u!82 &3243615111180814095
@@ -451,10 +443,10 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 8.001544
-  MaxDistance: 20.50099
+  MinDistance: 7
+  MaxDistance: 20
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -487,7 +479,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -537,20 +529,20 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 3b2e255d96eb0de439a406df811dd0f5, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 8.001543
-  MaxDistance: 20.619396
+  MinDistance: 5
+  MaxDistance: 20
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -583,7 +575,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -632,7 +624,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8164992115371040887}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlayerPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -654,67 +646,6 @@ Transform:
   m_Father: {fileID: 489995730598632547}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &3986093850400582797
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6981767087288529610}
-  - component: {fileID: 1621040182519282066}
-  - component: {fileID: 8334212652917970885}
-  m_Layer: 0
-  m_Name: HintForPlayer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6981767087288529610
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3986093850400582797}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 489995729188015707}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1621040182519282066
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3986093850400582797}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f10fa64de6add13409027f093f10877e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!58 &8334212652917970885
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3986093850400582797}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 2.5
 --- !u!1 &7273838737515642667
 GameObject:
   m_ObjectHideFlags: 0
@@ -724,7 +655,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4820512173946843234}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BioRobot Pack
   m_TagString: Untagged
   m_Icon: {fileID: 0}

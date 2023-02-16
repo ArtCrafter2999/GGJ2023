@@ -56,12 +56,15 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\AppearingUI.cs" />
     <Compile Include="Assets\Scripts\Enemies\Enemy.cs" />
     <Compile Include="Assets\Prefabs\Platform\DetectingMovePlatform.cs" />
     <Compile Include="Assets\UpgradesSystem\UpgradeBase.cs" />
     <Compile Include="Assets\Scripts\HoverSound.cs" />
+    <Compile Include="Assets\Scripts\Dialogues\NodeBase.cs" />
     <Compile Include="Assets\Scripts\BaseMechanics\IBerserk.cs" />
     <Compile Include="Assets\Scripts\Dialogues\DialogData.cs" />
+    <Compile Include="Assets\Prefabs\Press\PressAudio.cs" />
     <Compile Include="Assets\InputSystem\PlayerControlls.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
     <Compile Include="Assets\Prefabs\Platform\TimedMovePlatform.cs" />
@@ -72,12 +75,16 @@
     <Compile Include="Assets\UpgradesSystem\BerserkUpgrade.cs" />
     <Compile Include="Assets\Scripts\StartDialogue.cs" />
     <Compile Include="Assets\Scripts\BaseMechanics\IMovement.cs" />
+    <Compile Include="Assets\Scripts\Dialogues\TriggerNode.cs" />
+    <Compile Include="Assets\Scripts\Dialogues\PausePlayerNode.cs" />
     <Compile Include="Assets\Scripts\SoundData.cs" />
     <Compile Include="Assets\Scripts\Dialogues\Phrase.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerSpawner.cs" />
     <Compile Include="Assets\Prefabs\Platform\DetectingRotatePlatform.cs" />
     <Compile Include="Assets\Scripts\MainMenuScript.cs" />
+    <Compile Include="Assets\Scripts\Dialogues\WaitNode.cs" />
     <Compile Include="Assets\Prefabs\Platform\RotationPlatform.cs" />
+    <Compile Include="Assets\Scripts\Dialogues\PlayerGrowedNode.cs" />
     <Compile Include="Assets\Scripts\BaseMechanics\Implementation\Health.cs" />
     <Compile Include="Assets\UpgradesSystem\GrowthUpgrade.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerAnimationsController.cs" />
@@ -88,9 +95,11 @@
     <Compile Include="Assets\Scripts\Dialogues\Dialogue.cs" />
     <Compile Include="Assets\Scripts\Dialogues\PhraseData.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
+    <Compile Include="Assets\Scripts\SpikesAudio.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemySoundsController.cs" />
     <Compile Include="Assets\Scripts\TutorialPoint.cs" />
     <Compile Include="Assets\Scripts\Enemies\Projectile.cs" />
+    <Compile Include="Assets\Prefabs\Platform\RotationPlatformAudio.cs" />
     <Compile Include="Assets\Scripts\Player\HpBar.cs" />
     <Compile Include="Assets\Scripts\Bubble.cs" />
     <Compile Include="Assets\Scripts\TriggerZone.cs" />
@@ -98,23 +107,31 @@
     <Compile Include="Assets\Prefabs\Press\Press.cs" />
     <Compile Include="Assets\UpgradesSystem\HarmUpgrade.cs" />
     <Compile Include="Assets\Prefabs\Platform\TimedRotatePlatform.cs" />
-    <Compile Include="Assets\Scripts\Spikes.cs" />
+    <Compile Include="Assets\Scripts\TouchDamage.cs" />
     <Compile Include="Assets\UpgradesSystem\UpgradesManager.cs" />
+    <Compile Include="Assets\Prefabs\Platform\MovingPlatformAudio.cs" />
     <Compile Include="Assets\Scripts\BaseMechanics\FakeImplementation\FakeHarm.cs" />
     <Compile Include="Assets\Scripts\BaseMechanics\IGrowth.cs" />
+    <Compile Include="Assets\Scripts\Dialogues\PhraseNode.cs" />
     <Compile Include="Assets\Prefabs\Press\PressTimer.cs" />
     <Compile Include="Assets\Scripts\UIController.cs" />
     <Compile Include="Assets\Animation\Player\PlayerBehaviour.cs" />
     <Compile Include="Assets\Scripts\BaseMechanics\Implementation\Growther.cs" />
     <Compile Include="Assets\Scripts\BaseMechanics\Implementation\Berserker.cs" />
+    <Compile Include="Assets\Scripts\Dialogues\PlayerMovedNode.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerDeathHandler.cs" />
     <Compile Include="Assets\Scripts\BaseMechanics\Implementation\SelfHarmer.cs" />
     <Compile Include="Assets\UpgradesSystem\MovementUpgrade.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Dialogues\INode.cs" />
+    <Compile Include="Assets\Scripts\Dialogues\NodeSequence.cs" />
     <Compile Include="Assets\UpgradesSystem\UpgradesManagerUI.cs" />
+    <Compile Include="Assets\Scripts\Dialogues\ResumePlayerNode.cs" />
     <Compile Include="Assets\Scripts\BaseMechanics\FakeImplementation\FakeGrowth.cs" />
     <Compile Include="Assets\Scripts\Enemies\BioRobotAnimationEventsHandler.cs" />
     <Compile Include="Assets\Graphic\BackGround\Paralax.cs" />
+    <Compile Include="Assets\Scripts\Dialogues\EventNode.cs" />
+    <Compile Include="Assets\Scripts\UISpritesAnimation.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

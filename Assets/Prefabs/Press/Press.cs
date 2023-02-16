@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,6 +22,10 @@ public class Press : MonoBehaviour
     public float FallingDuration;
     public float DownTime;
     public float LiftingDuration;
+
+    public event Action OnFall;
+    public event Action OnLiftStart;
+    public event Action OnLiftEnd;
     // Start is called before the first frame update
     protected virtual void Start()
     {
@@ -41,11 +46,12 @@ public class Press : MonoBehaviour
 
     public void Fall()
     {
-        PressDownPart.transform.DOMoveY(_pressDownEndY, FallingDuration);
+        PressDownPart.transform.DOMoveY(_pressDownEndY, FallingDuration).OnComplete(() => OnFall?.Invoke());
     }
     public void Lift()
     {
-        PressDownPart.transform.DOMoveY(_pressDownStartY, LiftingDuration);
+        PressDownPart.transform.DOMoveY(_pressDownStartY, LiftingDuration).OnComplete(() => OnLiftEnd?.Invoke());
+        OnLiftStart?.Invoke();
     }
     public IEnumerator Drop()
     {

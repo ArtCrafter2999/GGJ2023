@@ -5,6 +5,7 @@ public class PlayerSoundsController : MonoBehaviour
 {
     public AudioSource source;
     public AudioSource walkSource;
+    public AudioSource slideSource;
     public AudioSource idleSource;
 
     public PlayerController Controller;
@@ -22,9 +23,10 @@ public class PlayerSoundsController : MonoBehaviour
     public float idleSoundInterval;
 
     public float walkFadeDuration;
+    public float slideFadeDuration;
 
     float moveTick, idleTick;
-    bool wasMoving, wasIdle;
+    bool wasMoving, wasIdle, wasSlide;
 
     // Start is called before the first frame update
     void Start()
@@ -41,55 +43,49 @@ public class PlayerSoundsController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bool moving = !Mathf.Approximately(Controller.MoveInput, 0f) && Controller.IsOnGround;
-        if (!wasMoving && moving)
+        bool moving = Controller.IsMoving && Controller.IsOnGround;
+
+        if (wasSlide != Controller.IsGrabbing)
         {
-            StartWalkClip();
-        }
-        if (wasMoving && !moving)
-        {
-            StopWalkClip();
+            if (Controller.IsGrabbing) StartClip(slideSource, slideFadeDuration);
+            else StopClip(slideSource, slideFadeDuration);
         }
 
-        bool idle = !(Mathf.Approximately(Controller.MoveInput, 0f) && !Controller.IsGrabbing && !Controller.IsSliding);
-        if (!wasIdle && idle)
+        if (wasMoving != moving)
         {
-            idleTick = idleSoundInterval;
+            if(moving) StartClip(walkSource, walkFadeDuration);
+            else StopClip(walkSource, walkFadeDuration);
         }
-        if (wasIdle && !idle)
+
+        bool idle = !Controller.IsMoving && !Controller.IsGrabbing && !Controller.IsSliding;
+        if(wasIdle != idle)
         {
-            StopIdleClip();
+            if(idle) idleTick = idleSoundInterval;
+            else StopClip(idleSource, walkFadeDuration);
         }
 
         idleTick -= Time.deltaTime;
         if (idleTick <= 0)
         {
-            StartIdleClip();
+            StartClip(idleSource, walkFadeDuration);
             idleTick = idleSoundInterval;
         }
 
         wasMoving = moving;
         wasIdle = idle;
+        wasSlide = Controller.IsGrabbing;
     }
 
     void PlayClip(SoundData data) => source.PlayOneShot(data.Clip, data.Volume);
-    void StartWalkClip()
-    {
-        walkSource.DOFade(1, walkFadeDuration).From(0);
-        walkSource.Play();
-    }
-    void StopWalkClip()
-    {
-        walkSource.DOFade(0, walkFadeDuration).From(1).OnComplete(walkSource.Stop);
-    }
 
-    void StartIdleClip()
+    void StartClip(AudioSource source, float fadeDuration)
     {
-        idleSource.DOFade(idle.Volume, walkFadeDuration).From(0);
-        idleSource.Play();
+        if(source.isPlaying) source.DOKill();
+        else source.DOFade(1, fadeDuration).From(0);
+        source.Play();
     }
-    void StopIdleClip()
+    void StopClip(AudioSource source, float fadeDuration)
     {
-        idleSource.DOFade(0, walkFadeDuration).From(idle.Volume).OnComplete(idleSource.Stop);
+        source.DOFade(0, fadeDuration).From(1).OnComplete(source.Stop).OnKill(source.Stop);
     }
 }

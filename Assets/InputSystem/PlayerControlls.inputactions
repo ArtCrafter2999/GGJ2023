@@ -156,9 +156,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Skip",
+                    "name": "SkipMovie",
                     "type": "Button",
                     "id": "d73a0417-7379-401d-aff3-1a06d077435c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SkipDialog",
+                    "type": "Button",
+                    "id": "95db2dab-798e-43a2-a5e1-0ff19923c8fb",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -184,7 +193,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Skip",
+                    "action": "SkipMovie",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -195,7 +204,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Skip",
+                    "action": "SkipMovie",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -206,7 +215,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Skip",
+                    "action": "SkipMovie",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "984d22d0-ef3b-4972-b028-fc786d013b86",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SkipDialog",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

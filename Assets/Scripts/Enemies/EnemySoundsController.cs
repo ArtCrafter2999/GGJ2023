@@ -9,7 +9,6 @@ public class EnemySoundsController : MonoBehaviour
 
     public SoundData shot;
     public SoundData growth;
-    public SoundData hit;
     public SoundData walk;
 
     public float moveSoundInterval;
@@ -70,5 +69,4 @@ public class EnemySoundsController : MonoBehaviour
     }
 
     public void PlayShot() => PlayClip(shot);
-    public void PlayHit() => PlayClip(hit);
 }

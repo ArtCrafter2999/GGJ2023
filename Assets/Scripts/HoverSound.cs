@@ -14,6 +14,6 @@ public class HoverSound : MonoBehaviour, IPointerEnterHandler
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        source.PlayOneShot(clip);
+        source.PlayOneShot(clip, 0.5f);
     }
 }

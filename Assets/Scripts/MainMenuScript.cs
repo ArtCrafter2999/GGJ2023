@@ -9,23 +9,27 @@ public class MainMenuScript : MonoBehaviour
 {
     public AudioClip start, exit;
     public AudioSource source;
+    private bool _isDisabled = false; 
 
     public void NewGame()
     {
-        StopAllCoroutines();
-        StartCoroutine(WaitForClip(start, () => SceneManager.LoadScene(1)));
+        if(!_isDisabled)
+            StartCoroutine(WaitForClip(start, () => SceneManager.LoadScene(1)));
     }
     public void Exit() 
     {
-        StopAllCoroutines();
-        StartCoroutine(WaitForClip(exit, Application.Quit));
+        if (!_isDisabled)
+            StartCoroutine(WaitForClip(exit, Application.Quit));
     }
 
     IEnumerator WaitForClip(AudioClip clip, Action a)
     {
+        _isDisabled = true;
         source.clip = clip;
         source.Play();
         yield return new WaitUntil(() => source.time >= clip.length);
+        _isDisabled = false;
         a();
+        
     }
 }

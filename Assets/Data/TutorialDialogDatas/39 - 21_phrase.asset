@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39b8522900a987b408b38f09434f14ee, type: 3}
+  m_Name: 39 - 21_phrase
+  m_EditorClassIdentifier: 
+  data:
+    clip: {fileID: 8300000, guid: 30c8f1c886743504e8a597e85d463f8e, type: 3}
+    dialogText: 'I can replace your memory in other species. You will be alive again,
+      just... in other way. '

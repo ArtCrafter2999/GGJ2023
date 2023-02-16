@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     public Transform CameraPoint;
     public Transform AttackPoint;
 
+    public LayerMask EnemyLayer;
+
     void Start()
     {
         GameManager.Instance.Player = gameObject;
@@ -57,14 +59,16 @@ public class Player : MonoBehaviour
     {
         // Атака = пророщение (Growth)
         
-        var col = Physics2D.OverlapCircle(AttackPoint.position, Mathf.Abs(AttackPoint.localPosition.x) - 0.6f);
-        print(col);
-        Enemy en = col?.GetComponentInParent<Enemy>();
-        if (en)
+        if(!health.IsDead)
         {
-            growther.GrowInTarget(en);
+            var col = Physics2D.OverlapCircle(AttackPoint.position, Mathf.Abs(AttackPoint.localPosition.x) - 0.6f, EnemyLayer);
+            print(col);
+            Enemy en = col?.GetComponentInParent<Enemy>();
+            if (en)
+            {
+                growther.GrowInTarget(en);
+            }
         }
-        
     }
     void Interact()
     {
@@ -87,5 +91,11 @@ public class Player : MonoBehaviour
             }
             closest?.Interacted.Invoke();
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(AttackPoint.position, Mathf.Abs(AttackPoint.localPosition.x) - 0.6f);
     }
 }

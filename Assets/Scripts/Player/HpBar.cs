@@ -1,22 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HpBar : MonoBehaviour
 {
-    private RectTransform _hpbar;
-    private float _hpbarStartWidth; 
-
+    public Image Hpbar;
     public Health Health;
-
-    private void Start()
-    {
-        _hpbar = GetComponent<RectTransform>();
-        _hpbarStartWidth = _hpbar.localScale.x;
-    }
+    public UISpritesAnimation Animation;
+    public float MaxDuration;
+    public float MinDuration;
 
     private void Update()
     {
-        _hpbar.localScale = new Vector3(_hpbarStartWidth / Health.MaxHealth * Health.CurrentHealth, _hpbar.localScale.y);
+        Hpbar.fillAmount = Health.CurrentHealth / Health.MaxHealth;
+        Animation.duration = Mathf.Clamp(Hpbar.fillAmount * MaxDuration, MinDuration, MaxDuration);
     }
 }

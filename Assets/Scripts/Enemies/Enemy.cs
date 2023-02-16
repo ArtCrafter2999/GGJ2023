@@ -6,6 +6,7 @@ using UnityEngine.PlayerLoop;
 
 public class Enemy : MonoBehaviour
 {
+    public bool NoAI;
     [Header("Move")]
     public float MoveSpeed;
     public float RestTime = 3f;
@@ -23,7 +24,7 @@ public class Enemy : MonoBehaviour
     public SpriteRenderer Sprite;
     public Animator Animator;
     public Transform PlayerRespawnPoint;
-    public bool IsUnderGrowth { get; set; }
+    public bool IsUnderGrowth { get; set; } = false;
     private Direction2 _facing;
     public Direction2 Facing
     {
@@ -43,10 +44,14 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        if (!NoAI)
+        {
+            Facing = Random.Range(0, 2) == 1 ? Direction2.Right : Direction2.Left;
 
-        Facing = Random.Range(0, 2) == 1 ? Direction2.Right : Direction2.Left;
-        StartCoroutine(Move());
-        StartCoroutine(CheckForPlayer());
+            StartCoroutine(Move());
+            StartCoroutine(CheckForPlayer());
+        }
+        else rb.isKinematic = true;
     }
 
     void Update()
@@ -83,7 +88,7 @@ public class Enemy : MonoBehaviour
             seconds -= Time.fixedDeltaTime;
             yield return new WaitForFixedUpdate();
         }
-        if (!_isSeePLayer)
+        if (!_isSeePLayer && !IsUnderGrowth)
         {
             Facing = Facing == Direction2.Right ? Direction2.Left : Direction2.Right;
             StartCoroutine(Move());
@@ -135,14 +140,15 @@ public class Enemy : MonoBehaviour
         //GetComponent<Collider2D>().enabled = false;
         rb.isKinematic = true;
         Sprite.transform.parent = transform.parent;
+        Sprite.transform.position = Sprite.transform.position + (Vector3.down * 0.01f);
         GameManager.Instance.Player.transform.position = PlayerRespawnPoint.position;
         Bubble.Checkpoint = PlayerRespawnPoint.position;
         Animator.SetTrigger("Death");
     }
     public void FinishDeath()
     {
+
         Destroy(gameObject);
-    //    StartCoroutine(WaitForDeath());
     }
 
     //IEnumerator WaitForDeath()

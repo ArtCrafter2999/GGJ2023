@@ -13,7 +13,6 @@ public class UIController : MonoBehaviour
 
     public GameObject dialogPanel;
     public TMP_Text dialogText;
-    public GameObject harmInfo;
     public GameObject growInfo;
 
     void Start()
@@ -35,17 +34,5 @@ public class UIController : MonoBehaviour
     {
         dialogPanel.SetActive(false);
         dialogText.text = string.Empty;
-    }
-
-    public void ShowHarmInfo()
-    {
-        StartCoroutine(WaitForHideHarmInfo());
-    }
-
-    IEnumerator WaitForHideHarmInfo()
-    {
-        harmInfo.SetActive(true);
-        yield return new WaitForSeconds(3);
-        harmInfo.SetActive(false);
     }
 }

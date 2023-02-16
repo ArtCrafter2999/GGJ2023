@@ -19,9 +19,8 @@ public class Bubble : MonoBehaviour
             if (!visited)
             {
                 dialogue.PlayDialog();
+                visited = true;
             }
-
-            visited = true;
         }
     }
     

@@ -13,7 +13,7 @@ public class VideoHandlerScript : MonoBehaviour
     {
         inputs = new PlayerControlls();
         player.loopPointReached += a => ChangeScene();
-        inputs.UI.Skip.performed += a => ChangeScene();
+        inputs.UI.SkipMovie.performed += a => ChangeScene();
         inputs.UI.Enable();
     }
 

@@ -178,9 +178,18 @@ public partial class @PlayerControlls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Skip"",
+                    ""name"": ""SkipMovie"",
                     ""type"": ""Button"",
                     ""id"": ""d73a0417-7379-401d-aff3-1a06d077435c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SkipDialog"",
+                    ""type"": ""Button"",
+                    ""id"": ""95db2dab-798e-43a2-a5e1-0ff19923c8fb"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -206,7 +215,7 @@ public partial class @PlayerControlls : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Skip"",
+                    ""action"": ""SkipMovie"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -217,7 +226,7 @@ public partial class @PlayerControlls : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Skip"",
+                    ""action"": ""SkipMovie"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -228,7 +237,18 @@ public partial class @PlayerControlls : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Skip"",
+                    ""action"": ""SkipMovie"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""984d22d0-ef3b-4972-b028-fc786d013b86"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SkipDialog"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -253,7 +273,8 @@ public partial class @PlayerControlls : IInputActionCollection2, IDisposable
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Pause = m_UI.FindAction("Pause", throwIfNotFound: true);
-        m_UI_Skip = m_UI.FindAction("Skip", throwIfNotFound: true);
+        m_UI_SkipMovie = m_UI.FindAction("SkipMovie", throwIfNotFound: true);
+        m_UI_SkipDialog = m_UI.FindAction("SkipDialog", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -379,13 +400,15 @@ public partial class @PlayerControlls : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_UI;
     private IUIActions m_UIActionsCallbackInterface;
     private readonly InputAction m_UI_Pause;
-    private readonly InputAction m_UI_Skip;
+    private readonly InputAction m_UI_SkipMovie;
+    private readonly InputAction m_UI_SkipDialog;
     public struct UIActions
     {
         private @PlayerControlls m_Wrapper;
         public UIActions(@PlayerControlls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Pause => m_Wrapper.m_UI_Pause;
-        public InputAction @Skip => m_Wrapper.m_UI_Skip;
+        public InputAction @SkipMovie => m_Wrapper.m_UI_SkipMovie;
+        public InputAction @SkipDialog => m_Wrapper.m_UI_SkipDialog;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -398,9 +421,12 @@ public partial class @PlayerControlls : IInputActionCollection2, IDisposable
                 @Pause.started -= m_Wrapper.m_UIActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnPause;
-                @Skip.started -= m_Wrapper.m_UIActionsCallbackInterface.OnSkip;
-                @Skip.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnSkip;
-                @Skip.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnSkip;
+                @SkipMovie.started -= m_Wrapper.m_UIActionsCallbackInterface.OnSkipMovie;
+                @SkipMovie.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnSkipMovie;
+                @SkipMovie.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnSkipMovie;
+                @SkipDialog.started -= m_Wrapper.m_UIActionsCallbackInterface.OnSkipDialog;
+                @SkipDialog.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnSkipDialog;
+                @SkipDialog.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnSkipDialog;
             }
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
@@ -408,9 +434,12 @@ public partial class @PlayerControlls : IInputActionCollection2, IDisposable
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
-                @Skip.started += instance.OnSkip;
-                @Skip.performed += instance.OnSkip;
-                @Skip.canceled += instance.OnSkip;
+                @SkipMovie.started += instance.OnSkipMovie;
+                @SkipMovie.performed += instance.OnSkipMovie;
+                @SkipMovie.canceled += instance.OnSkipMovie;
+                @SkipDialog.started += instance.OnSkipDialog;
+                @SkipDialog.performed += instance.OnSkipDialog;
+                @SkipDialog.canceled += instance.OnSkipDialog;
             }
         }
     }
@@ -435,6 +464,7 @@ public partial class @PlayerControlls : IInputActionCollection2, IDisposable
     public interface IUIActions
     {
         void OnPause(InputAction.CallbackContext context);
-        void OnSkip(InputAction.CallbackContext context);
+        void OnSkipMovie(InputAction.CallbackContext context);
+        void OnSkipDialog(InputAction.CallbackContext context);
     }
 }
