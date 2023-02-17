@@ -35,7 +35,10 @@ public class GameManager : MonoBehaviour
     }
     public void ChangeScene(int scene)
     {
+	Instance = null;
+	Controlls.Disable();
         SceneManager.LoadScene(scene);
+	Destroy(gameObject);
     }
     //private void SceneLoaded(Scene scene, LoadSceneMode mode)
     //{

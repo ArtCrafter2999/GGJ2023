@@ -117,6 +117,7 @@
     <Compile Include="Assets\Scripts\UIController.cs" />
     <Compile Include="Assets\Animation\Player\PlayerBehaviour.cs" />
     <Compile Include="Assets\Scripts\BaseMechanics\Implementation\Growther.cs" />
+    <Compile Include="Assets\Scripts\UISpritesAnimation.cs" />
     <Compile Include="Assets\Scripts\BaseMechanics\Implementation\Berserker.cs" />
     <Compile Include="Assets\Scripts\Dialogues\PlayerMovedNode.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerDeathHandler.cs" />
@@ -131,7 +132,6 @@
     <Compile Include="Assets\Scripts\Enemies\BioRobotAnimationEventsHandler.cs" />
     <Compile Include="Assets\Graphic\BackGround\Paralax.cs" />
     <Compile Include="Assets\Scripts\Dialogues\EventNode.cs" />
-    <Compile Include="Assets\Scripts\UISpritesAnimation.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
