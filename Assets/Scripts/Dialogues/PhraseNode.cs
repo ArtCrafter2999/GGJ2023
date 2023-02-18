@@ -13,7 +13,7 @@ public class PhraseNode : NodeBase
     private Phrase _phrase;
     public override bool Invoke()
     {
-        NodeSequence.print($"name: {_phrase.source.clip.name},    time: {_phrase.source.time},    lenght: {_phrase.source.clip.length},    IsEnded: {_phrase.IsEnded}");
+        //NodeSequence.print($"name: {_phrase.source.clip.name},    time: {_phrase.source.time},    lenght: {_phrase.source.clip.length},    IsEnded: {_phrase.IsEnded}");
         
         return _phrase.IsEnded || !_phrase.source.isPlaying;
     }
